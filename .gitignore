@@ -1,5 +1,3 @@
-bundle/
-tmp/
 tramp
 site-lisp
 wget-log
