@@ -1,0 +1,8 @@
+(try-load "config/emacs/base")
+(try-load "config/emacs/themes")
+(try-load "config/emacs/window")
+(try-load "config/emacs/font")
+(try-load "config/emacs/keymap")
+(try-load "config/emacs/vcs")
+(try-load "config/emacs/modeline")
+(try-load "config/emacs/cocoa-emacs")
