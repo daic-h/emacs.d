@@ -1,4 +1,4 @@
-;;(set-frame-parameter (selected-frame) 'alpha '(100 100)) ;; 透明度 (active . inactive)
+(set-frame-parameter (selected-frame) 'alpha '(95 95))   ;; 透明度 (active . inactive)
 (scroll-bar-mode -1)                                     ;; スクロールバー非表示
 (tool-bar-mode 0)                                        ;; ツールバー非表示
 (column-number-mode t)                                   ;; カーソルの位置が何文字目なのかを表示
@@ -13,7 +13,7 @@
       scroll-preserve-screen-position 1)
 (global-hl-line-mode 0)                                ;; 編集行のハイライトしない
 ;; (setq hl-line-face 'underline)                      ;; 下線
-(blink-cursor-mode 1)
+(blink-cursor-mode 0)
 
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))    ;; マウススクロールを1行単位
 (setq mouse-wheel-progressive-speed nil)               ;; スクロールの加速をOFF

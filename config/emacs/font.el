@@ -4,7 +4,7 @@
   (let* ((fontset-name "myfonts") ; フォントセットの名前
          (size (if (string= (system-name) "MacBookAir.local")
                    12
-                 12)) ; ASCIIフォントのサイズ [9/10/12/14/15/17/19/20/...]
+                 10)) ; ASCIIフォントのサイズ [9/10/12/14/15/17/19/20/...]
          (asciifont "Menlo") ; ASCIIフォント
          (jpfont "SetoFont") ; 日本語フォント
          (font (format "%s-%d:weight=normal:slant=normal" asciifont size))
@@ -35,3 +35,6 @@
   ;; # これは起動時に default-frame-alist に従ったフレームが
   ;; # 作成されない現象への対処
   (set-face-font 'default "fontset-myfonts"))
+
+;; Share-TechMono
+;; Menlo

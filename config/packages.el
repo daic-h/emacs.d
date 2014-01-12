@@ -30,15 +30,14 @@
 (try-load "config/packages/multi-term")
 (try-load "config/packages/auto-highlight-symbol")
 (try-load "config/packages/google-translate")
-;; (try-load "config/packages/revive")
+(try-load "config/packages/rotate")
 (try-load "config/packages/ace-jump-mode")
+;; (try-load "config/packages/revive")
 ;; (try-load "config/packages/popup-pos-tip")
 ;; (try-load "config/packages/guide-key")
-
 ;; (try-load "config/packages/auto-save-buffers")
 ;; (try-load "config/packages/ediff")
 ;; (try-load "config/packages/quickrun")
-;; (try-load "config/packages/rotate")
 
 ;; Development Package
 (try-load "config/packages/php-mode")

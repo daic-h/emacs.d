@@ -4,13 +4,12 @@
 (el-bundler:packages
  ;; helm
  (:type "github" :name "emacs-helm/helm")
- (:type "github" :name "emacs-helm/helm-c-moccur")
  (:type "github" :name "emacs-helm/helm-descbinds")
  (:type "github" :name "emacs-helm/helm-ls-git")
  (:type "github" :name "emacs-helm/helm-c-yasnippet")
  (:type "github" :name "daic-h/helm-growthforecast")
-;; (:type "github" :name "syohex/emacs-helm-ag")
  (:type "github" :name "syohex/emacs-helm-gtags")
+ (:type "github" :name "ShingoFukuyama/helm-swoop")
 
   ;; git-butter
  (:type "github" :name "syohex/emacs-git-gutter")
@@ -40,8 +39,9 @@
  (:type "github" :name "dominikh/go-mode.el")
 
  ;; utils
- (:type "github" :name "emacsmirror/revive")
+ (:type "github" :name "daic-h/emacs-rotate")
  (:type "github" :name "daic-h/auto-async-byte-compile-mirror")
+ (:type "github" :name "emacsmirror/revive")
  (:type "github" :name "hayamiz/twittering-mode")
  (:type "github" :name "capitaomorte/yasnippet")
  (:type "github" :name "m2ym/popwin-el")
@@ -77,27 +77,3 @@
 
 (el-bundler:configure :dir "~/.emacs.d/packages/bundle" :process-num 3)
 (el-bundler:initialize)
-
-;; (elpm-packages
-;;  (:type "github" :name "emacs-helm/helm")
-;;  (:type "github" :name "emacs-helm/helm-c-moccur")
-;;  (:type "github" :name "emacs-helm/helm-descbinds")
-;;  (:type "github" :name "emacs-helm/helm-ls-git")
-;;  (:type "github" :name "emacs-helm/helm-c-yasnippet")
-;;  (:type "github" :name "daic-h/helm-growthforecast")
-;;  (:type "github" :name "syohex/emacs-helm-ag")
-;;  (:type "github" :name "syohex/emacs-helm-gtags")
-;;  (:type "git" :url "git://navi2ch.git.sourceforge.net/gitroot/navi2ch/navi2ch")))
-
-;; (elpm-source :github
-;;  (:name "emacs-helm/helm")
-;;  (:name "emacs-helm/helm-c-moccur")
-;;  (:name "emacs-helm/helm-descbinds")
-;;  (:name "emacs-helm/helm-ls-git")
-;;  (:name "emacs-helm/helm-c-yasnippet")
-;;  (:name "daic-h/helm-growthforecast")
-;;  (:name "syohex/emacs-helm-ag")
-;;  (:name "syohex/emacs-helm-gtags"))
-
-;; (elpm-sources :git
-;;  (:url "git://navi2ch.git.sourceforge.net/gitroot/navi2ch/navi2ch"))

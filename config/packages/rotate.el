@@ -1,3 +1,3 @@
 (require 'rotate)
-(global-set-key (kbd "C-t") 'rotate-layout)
-(global-set-key (kbd "M-t") 'rotate-window)
+(global-set-key (kbd "C-c C-SPC") 'rotate-layout)
+;; (global-set-key (kbd "C-M-t") 'rotate-window)
