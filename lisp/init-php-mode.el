@@ -1,7 +1,7 @@
 (lazyload (php-mode) "php-mode")
 
 (add-hook-fn 'php-mode-hook
- (require 'docblock)
+ (require 'php-doc-block)
  (setq indent-tabs-mode nil)
  (setq c-basic-offset 4)
  (setq tab-width 4)
