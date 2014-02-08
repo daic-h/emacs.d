@@ -1,6 +1,6 @@
 tramp
-site-lisp
+site-lisp/bundle
 wget-log
 .DS_Store
-local.el
+init-local.el
 *.elc
