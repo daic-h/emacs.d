@@ -83,18 +83,6 @@
 (define-key global-map (kbd "C-q C-j") #'windmove-down)
 (define-key global-map (kbd "C-q C-k") #'windmove-up)
 
-;; コメントアウトして貼り付け
-;;_______________________________________________________________
-(defun copy-and-comment-out (start end)
-  (interactive "r")
-  ;;(save-excursion
-    (kill-ring-save start end)
-    (comment-region start end)
-    (newline)
-    ;;(newline)
-    (yank));)
-(define-key global-map (kbd "C-M-:") #'copy-and-comment-out)
-
 ;; scratchバッファの保存とリストア
 ;;_______________________________________________________________
 (defun save-scratch-data ()
@@ -127,38 +115,6 @@
       (progn (delete-region (point-min) (point-max)) nil)
     t))
 (add-hook 'kill-buffer-query-functions #'unkillable-scratch-buffer)
-
-;;; 折り返し表示ON/OFF
-;;====================================
-(define-key global-map (kbd "C-c TAB")
-  (lambda ()
-    (interactive)
-    (if truncate-lines
-        (setq truncate-lines nil)
-      (setq truncate-lines t))))
-
-(defun copy-line (&optional arg)
-  (interactive "p")
-  (copy-region-as-kill
-   (line-beginning-position)
-   (line-beginning-position (1+ (or arg 1))))
-  (message "Line copied"))
-
-;; リージョンを選択していないときに行をキルする
-;;====================================
-(defadvice kill-region (around kill-line-or-kill-region activate)
-  (if (and (called-interactively-p 'interactive)
-           transient-mark-mode (not mark-active))
-      (kill-whole-line)
-    ad-do-it))
-
-;; リージョンを選択していないときに行をコピーする
-;;====================================
-(defadvice kill-ring-save (around kill-line-save-or-kill-ring-save activate)
-  (if (and (called-interactively-p 'interactive)
-           transient-mark-mode (not mark-active))
-      (copy-line)
-    ad-do-it))
 
 
 ;; 所有者がrootだった場合にsudoで開くかを確認する

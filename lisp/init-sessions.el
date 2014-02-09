@@ -72,11 +72,10 @@
                 tags-file-name
                 tags-table-list)))
 
-(when (eval-when-compile (and (>= emacs-major-version 24)
-                              (string< emacs-version "24.3.50")
-                              ))
-  (unless (boundp 'desktop-restore-frames)
-    (require-package 'frame-restore)
-    (frame-restore)))
+;; (when (eval-when-compile (and (>= emacs-major-version 24)
+;;                               (string< emacs-version "24.3.50")))
+;;   (unless (boundp 'desktop-restore-frames)
+;;     (require-package 'frame-restore)
+;;     (frame-restore)))
 
 (provide 'init-sessions)
