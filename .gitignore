@@ -4,3 +4,5 @@ wget-log
 .DS_Store
 init-local.el
 *.elc
+org/
+elpm
