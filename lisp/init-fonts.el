@@ -4,7 +4,7 @@
   (let* ((fontset-name "myfonts") ; フォントセットの名前
          (size (if (string= (system-name) "MacBookAir.local")
                    12
-                 10)) ; ASCIIフォントのサイズ [9/10/12/14/15/17/19/20/...]
+                 14)) ; ASCIIフォントのサイズ [9/10/12/14/15/17/19/20/...]
          (asciifont "Menlo") ; ASCIIフォント
          (jpfont "SetoFont") ; 日本語フォント
          (font (format "%s-%d:weight=normal:slant=normal" asciifont size))

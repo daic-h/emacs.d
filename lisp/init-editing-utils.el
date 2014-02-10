@@ -121,15 +121,15 @@
    (line-beginning-position (1+ (or arg 1))))
   (message "Line copied"))
 
-;; リージョンを選択していないときに行をキルする
 (defadvice kill-region (around kill-line-or-kill-region activate)
+  "リージョンを選択していないときに行をキルする"
   (if (and (called-interactively-p 'interactive)
            transient-mark-mode (not mark-active))
       (kill-whole-line)
     ad-do-it))
 
-;; リージョンを選択していないときに行をコピーする
 (defadvice kill-ring-save (around kill-line-save-or-kill-ring-save activate)
+  "リージョンを選択していないときに行をコピーする"
   (if (and (called-interactively-p 'interactive)
            transient-mark-mode (not mark-active))
       (copy-line)

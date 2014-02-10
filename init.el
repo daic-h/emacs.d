@@ -12,56 +12,57 @@
 ;;----------------------------------------------------------------------------
 ;; Bootstrap config
 ;;----------------------------------------------------------------------------
-;; (require 'init-compat)
-(require 'init-utils)
-(require 'init-site-lisp)
-(require 'init-el-bundler)
-(require 'init-exec-path)
+;; (require-init 'init-compat)
+(require-init 'init-utils)
+(require-init 'init-site-lisp)
+(require-init 'init-el-bundler)
+(require-init 'init-exec-path)
 
 ;;----------------------------------------------------------------------------
 ;; Load configs for specific features and modes
 ;;----------------------------------------------------------------------------
-(require 'init-themes)
-(require 'init-modeline)
-(require 'init-osx-keys)
-(require 'init-gui-frames)
-(require 'init-dired)
-(require 'init-uniquify)
-(require 'init-flycheck)
-;; (require 'init-isearch)
+(require-init 'init-themes)
+(require-init 'init-modeline)
+(require-init 'init-osx-keys)
+(require-init 'init-gui-frames)
+(require-init 'init-dired)
+(require-init 'init-uniquify)
+(require-init 'init-flycheck)
+;; (require-init 'init-isearch)
 
-(require 'init-helm)
-(require 'init-recentf)
-(require 'init-ido)
-(require 'init-hippie-expand)
-(require 'init-auto-complete)
-(require 'init-sessions)
-(require 'init-fonts)
-;; (require 'init-windows)
+(require-init 'init-helm)
+(require-init 'init-recentf)
+(require-init 'init-ido)
+(require-init 'init-hippie-expand)
+(require-init 'init-auto-complete)
+(require-init 'init-fonts)
+;; (require-init 'init-sessions)
+;; (require-init 'init-windows)
 
-(require 'init-git)
-(require 'init-git-gutter)
+(require-init 'init-redo)
+(require-init 'init-undohist)
+(require-init 'init-expand-region)
+(require-init 'init-multiple-cursors)
+(require-init 'init-auto-highlight-symbol)
+(require-init 'init-sequential-command)
+(require-init 'init-cua-mode)
+(require-init 'init-diff-mode)
+(require-init 'init-smooth-scroll)
+(require-init 'init-ace-jump-mode)
+(require-init 'init-flex-autopair)
+(require-init 'init-point-undo)
+(require-init 'init-goto-chg)
 
-(require 'init-redo)
-(require 'init-undohist)
-(require 'init-expand-region)
-(require 'init-multiple-cursors)
-(require 'init-auto-highlight-symbol)
-(require 'init-sequential-command)
-(require 'init-cua-mode)
-(require 'init-diff-mode)
-(require 'init-smooth-scroll)
-(require 'init-ace-jump-mode)
-(require 'init-flex-autopair)
-(require 'init-point-undo)
-(require 'init-goto-chg)
-(require 'init-editing-utils)
+(require-init 'init-editing-utils)
 
-(require 'init-popwin)
-(require 'init-google-translate)
-(require 'init-jaunte)
-(require 'init-rotate)
-;; elscreen.el
+(require-init 'init-git)
+(require-init 'init-git-gutter)
+
+(require-init 'init-popwin)
+(require-init 'init-google-translate)
+(require-init 'init-jaunte)
+(require-init 'init-rotate)
+(require-init 'init-elscreen)
 ;; emacs-w3m.el
 ;; growthforecast.el
 ;; grep-edit.el
@@ -69,14 +70,14 @@
 ;; quickrun.el
 ;; multi-term.el
 
-(require 'init-cc-mode)
-(require 'init-shell-script-mode)
-(require 'init-ruby-mode)
-(require 'init-yaml-mode)
-(require 'init-php-mode)
-(require 'init-js2-mode)
-(require 'init-web-mode)
-(require 'init-coffee-mode)
+(require-init 'init-cc-mode)
+(require-init 'init-shell-script-mode)
+(require-init 'init-ruby-mode)
+(require-init 'init-yaml-mode)
+(require-init 'init-php-mode)
+(require-init 'init-js2-mode)
+(require-init 'init-web-mode)
+(require-init 'init-coffee-mode)
 ;; erlang-mode.el
 ;; go-mode.el
 ;; haml-mode.el
@@ -84,11 +85,11 @@
 ;; scheme-mode.el
 ;; scss-mode.el
 
-(require 'init-navi2ch)
-(require 'init-twittering-mode)
+(require-init 'init-navi2ch)
+(require-init 'init-twittering-mode)
 
-(require 'init-misc)
-(require 'init-user-function)
+(require-init 'init-misc)
+(require-init 'init-user-function)
 
 ;;----------------------------------------------------------------------------
 ;; Allow access from emacsclient
@@ -107,19 +108,13 @@
 ;;----------------------------------------------------------------------------
 ;; Allow users to provide an optional "init-local" containing personal settings
 ;;----------------------------------------------------------------------------
-(when (file-exists-p (expand-file-name "init-local.el" user-emacs-directory))
-  (error "Please move init-local.el to ~/.emacs.d/lisp"))
-(require 'init-local nil t)
+(when (file-exists-p (expand-file-name "init-local.el" (concat user-emacs-directory "lisp")))
+  (require-init 'init-local))
 
 ;;----------------------------------------------------------------------------
 ;; Locales (setting them earlier in this file doesn't work in X)
 ;;----------------------------------------------------------------------------
-(require 'init-locales)
-
-(add-hook 'after-init-hook
-          (lambda ()
-            (message "init completed in %.2fms"
-                     (sanityinc/time-subtract-millis after-init-time before-init-time))))
+(require-init 'init-locales)
 
 (provide 'init)
 ;;; init.el ends here

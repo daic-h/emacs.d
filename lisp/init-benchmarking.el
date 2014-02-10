@@ -1,25 +1,22 @@
-(defun sanityinc/time-subtract-millis (b a)
-  (* 1000.0 (float-time (time-subtract b a))))
-
-
-(defvar sanityinc/require-times nil
+(defvar init-require-times nil
   "A list of (FEATURE . LOAD-DURATION).
 LOAD-DURATION is the time taken in milliseconds to load FEATURE.")
 
-(defadvice require
-  (around build-require-times (feature &optional filename noerror) activate)
-  "Note in `sanityinc/require-times' the time taken to require each feature."
-  (let* ((already-loaded (memq feature features))
-         (require-start-time (and (not already-loaded) (current-time))))
-    (prog1
-        ad-do-it
-      (when (and (not already-loaded) (memq feature features))
-        (add-to-list 'sanityinc/require-times
-                     (cons feature
-                           (sanityinc/time-subtract-millis (current-time)
-                                                           require-start-time))
-                     t)))))
+(defmacro require-init (feature)
+  `(condition-case err
+       (let ((already-loaded (memq ,feature features))
+             (require-time (benchmark-run (require ,feature))))
+         (unless already-loaded
+           (add-to-list 'init-require-times
+                        (cons ,feature (car require-time)))))
+     (error (message (format "[ERROR] %s: %s" ,feature err)))))
 
+(defun init-benchmarking-after-hook ()
+  (dolist (detail init-require-times)
+    (message "%s completed in %.2fms" (car detail) (cdr detail)))
+  (message "total time: %.3f sec"
+           (float-time (time-subtract after-init-time before-init-time))))
 
+(add-hook 'after-init-hook 'init-benchmarking-after-hook)
 
 (provide 'init-benchmarking)

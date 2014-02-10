@@ -8,3 +8,5 @@
 (setq elscreen-tab-display-kill-screen nil)
 
 (global-set-key (kbd "C-z C-b") 'helm-elscreen)
+
+(provide 'init-elscreen)
