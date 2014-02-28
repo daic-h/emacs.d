@@ -1,8 +1,9 @@
 tramp
-site-lisp/bundle
+site-lisp/el-get
 wget-log
 .DS_Store
 init-local.el
 *.elc
 org/
+howm/
 elpm

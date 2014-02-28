@@ -12,10 +12,9 @@
 ;;----------------------------------------------------------------------------
 ;; Bootstrap config
 ;;----------------------------------------------------------------------------
-;; (require-init 'init-compat)
 (require-init 'init-utils)
 (require-init 'init-site-lisp)
-(require-init 'init-el-bundler)
+(require-init 'init-el-get)
 (require-init 'init-exec-path)
 
 ;;----------------------------------------------------------------------------
@@ -28,7 +27,6 @@
 (require-init 'init-dired)
 (require-init 'init-uniquify)
 (require-init 'init-flycheck)
-;; (require-init 'init-isearch)
 
 (require-init 'init-helm)
 (require-init 'init-recentf)
@@ -39,6 +37,7 @@
 ;; (require-init 'init-sessions)
 ;; (require-init 'init-windows)
 
+(require-init 'init-howm)
 (require-init 'init-redo)
 (require-init 'init-undohist)
 (require-init 'init-expand-region)
@@ -65,7 +64,6 @@
 (require-init 'init-elscreen)
 ;; emacs-w3m.el
 ;; growthforecast.el
-;; grep-edit.el
 ;; guide-key.el
 ;; quickrun.el
 ;; multi-term.el
@@ -78,12 +76,12 @@
 (require-init 'init-js2-mode)
 (require-init 'init-web-mode)
 (require-init 'init-coffee-mode)
+(require-init 'init-scss-mode)
 ;; erlang-mode.el
 ;; go-mode.el
 ;; haml-mode.el
 ;; scala-mode2.el
 ;; scheme-mode.el
-;; scss-mode.el
 
 (require-init 'init-navi2ch)
 (require-init 'init-twittering-mode)

@@ -8,6 +8,6 @@
   (setq web-mode-java-offset   2)
   (setq web-mode-asp-offset    2))
 
-(add-auto-mode'web-mode "\\.html?$" "\\.phtml$")
+(add-auto-mode'web-mode "\\.html?$" "\\.phtml$" "\\.erb$")
 
 (provide 'init-web-mode)
