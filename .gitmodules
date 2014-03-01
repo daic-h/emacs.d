@@ -1,3 +1,0 @@
-[submodule "site-lisp/elisp/el-bundler"]
-	path = site-lisp/elisp/el-bundler
-	url = https://github.com/daic-h/el-bundler.git
