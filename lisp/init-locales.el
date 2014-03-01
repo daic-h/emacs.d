@@ -10,7 +10,8 @@
       (sanityinc/utf8-locale-p (getenv "LANG"))))
 
 (when (or window-system (locale-is-utf8-p))
-  (setq utf-translate-cjk-mode nil) ; disable CJK coding/encoding (Chinese/Japanese/Korean characters)
+  ;; disable CJK coding/encoding (Chinese/Japanese/Korean characters)
+  (setq utf-translate-cjk-mode nil)
   (set-language-environment 'utf-8)
   (setq locale-coding-system 'utf-8)
   (set-default-coding-systems 'utf-8)

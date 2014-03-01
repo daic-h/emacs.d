@@ -1,4 +1,5 @@
-(lazyload (howm-menu howm-create) "howm")
+(lazyload (howm-menu howm-create) "howm"
+  (set-face-background 'howm-view-name-face "DimGray"))
 
 (define-key global-map (kbd "C-c , ,") 'howm-menu)
 
