@@ -1,7 +1,7 @@
-(setq el-get-dir (concat user-emacs-directory  "site-lisp/el-get/")
-      el-get-verbose t)
+(setq el-get-dir (expand-file-name "site-lisp/el-get" user-emacs-directory))
+(setq el-get-verbose t)
 
-(add-to-list 'load-path (concat el-get-dir  "el-get/"))
+(add-to-list 'load-path (expand-file-name "el-get" el-get-dir))
 (unless (require 'el-get nil 'noerror)
   (with-current-buffer
       (url-retrieve-synchronously
@@ -13,7 +13,6 @@
 (let ((el-get-sources '((:type github :name helm-gtags          :pkgname "syohex/emacs-helm-gtags" :depends helm)
                         (:type github :name helm-swoop          :pkgname "ShingoFukuyama/helm-swoop" :depends helm)
                         (:type github :name helm-growthforecast :pkgname "daic-h/helm-growthforecast" :depends helm)
-                        (:type github :name emacs-w3m           :pkgname "id774-2/emacs-w3m" :compile nil)
                         (:type github :name rotate              :pkgname "daic-h/emacs-rotate")
                         (:type github :name smooth-scroll       :pkgname "k-talo/smooth-scroll.el")
                         (:type github :name elscreen            :pkgname "emacs-jp/elscreen")
@@ -29,14 +28,15 @@
                         (:type github :name point-undo          :pkgname "emacsmirror/point-undo")
                         (:type github :name sudo-ext            :pkgname "emacsmirror/sudo-ext")
                         (:type github :name multi-term          :pkgname "emacsmirror/multi-term")
-                        (:type github :name sequential-command  :pkgname "emacsmirror/sequential-command"))))
+                        (:type github :name sequential-command  :pkgname "emacsmirror/sequential-command")
+                        (:type http-tar :name howm :options ("xzf") :url "http://howm.sourceforge.jp/a/howm-1.4.2.tar.gz"))))
   ;; Packages to install from el-get
   (el-get 'sync '(php-mode js2-mode scala-mode2 coffee-mode go-mode web-mode haml-mode yaml-mode scss-mode
                   helm helm-descbinds helm-ls-git helm-gtags helm-swoop helm-growthforecast
                   expand-region git-gutter-fringe auto-complete flycheck exec-path-from-shell
-                  twittering-mode emacs-w3m popwin undohist multiple-cursors region-bindings-mode
+                  twittering-mode popwin undohist multiple-cursors region-bindings-mode
                   goto-chg quickrun flex-autopair auto-highlight-symbol ace-jump-mode
                   dired-plus apel navi2ch redo-plus session point-undo rotate elscreen smooth-scroll
-                  jaunte google-translate guide-key sudo-ext multi-term sequential-command)))
+                  jaunte google-translate guide-key sudo-ext multi-term sequential-command howm)))
 
 (provide 'init-el-get)

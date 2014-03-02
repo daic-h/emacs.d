@@ -12,7 +12,7 @@ LOAD-DURATION is the time taken in milliseconds to load FEATURE.")
      (error (message (format "[ERROR] %s: %s" ,feature err)))))
 
 (defun init-benchmarking-after-hook ()
-  (dolist (detail init-require-times)
+  (dolist (detail (reverse init-require-times))
     (message "%s completed in %.2fms" (car detail) (cdr detail)))
   (message "total time: %.3f sec"
            (float-time (time-subtract after-init-time before-init-time))))

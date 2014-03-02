@@ -62,7 +62,6 @@
 (require-init 'init-jaunte)
 (require-init 'init-rotate)
 (require-init 'init-elscreen)
-;; emacs-w3m.el
 ;; growthforecast.el
 ;; guide-key.el
 ;; quickrun.el
@@ -99,14 +98,14 @@
 ;;----------------------------------------------------------------------------
 ;; Variables configured via the interactive 'customize' interface
 ;;----------------------------------------------------------------------------
-(setq custom-file (expand-file-name "custom.el" (concat user-emacs-directory "tmp/")))
+(setq custom-file (expand-file-name "tmp/custom.el" user-emacs-directory))
 (when (file-exists-p custom-file)
   (load custom-file))
 
 ;;----------------------------------------------------------------------------
 ;; Allow users to provide an optional "init-local" containing personal settings
 ;;----------------------------------------------------------------------------
-(when (file-exists-p (expand-file-name "init-local.el" (concat user-emacs-directory "lisp")))
+(when (file-exists-p (expand-file-name "lisp/init-local.el" user-emacs-directory))
   (require-init 'init-local))
 
 ;;----------------------------------------------------------------------------
