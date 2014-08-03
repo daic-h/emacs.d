@@ -1,5 +1,4 @@
-(defadvice vc-revert-buffer-internal (around no-revert-in-Git activate)
-  "gitはワークファイルの内容を書き換えないのでrevert不要"
-  (if (eq (vc-backend buffer-file-name) 'Git) 'not-do-it ad-do-it))
+(require 'modeline-git-branch)
+(modeline-git-branch-mode 1)
 
 (provide 'init-git)

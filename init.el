@@ -27,15 +27,17 @@
 (require-init 'init-dired)
 (require-init 'init-uniquify)
 (require-init 'init-flycheck)
+(require-init 'init-vc-mode)
 
 (require-init 'init-helm)
+(require-init 'init-helm-ext)
 (require-init 'init-recentf)
 (require-init 'init-ido)
 (require-init 'init-hippie-expand)
 (require-init 'init-auto-complete)
 (require-init 'init-fonts)
+(require-init 'init-windows)
 ;; (require-init 'init-sessions)
-;; (require-init 'init-windows)
 
 (require-init 'init-howm)
 (require-init 'init-redo)
@@ -62,9 +64,8 @@
 (require-init 'init-jaunte)
 (require-init 'init-rotate)
 (require-init 'init-elscreen)
-;; growthforecast.el
+;; (require-init 'init-quickrun)
 ;; guide-key.el
-;; quickrun.el
 ;; multi-term.el
 
 (require-init 'init-cc-mode)
@@ -73,6 +74,7 @@
 (require-init 'init-yaml-mode)
 (require-init 'init-php-mode)
 (require-init 'init-js2-mode)
+(require-init 'init-json-reformat)
 (require-init 'init-web-mode)
 (require-init 'init-coffee-mode)
 (require-init 'init-scss-mode)

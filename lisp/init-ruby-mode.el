@@ -8,7 +8,7 @@
 (add-auto-mode 'ruby-mode
                "Rakefile\\'" "\\.rake\\'" "\\.rxml\\'"
                "\\.rjs\\'" "\\.irbrc\\'" "\\.pryrc\\'"
-               "\\.builder\\'" "\\.ru\\'"
+               "\\.[mj]?builder\\'" "\\.ru\\'"
                "\\.gemspec\\'" "Gemfile\\'" "Kirkfile\\'")
 
 (provide 'init-ruby-mode)

@@ -9,9 +9,7 @@
   (setq mac-pass-option-to-system nil)
 
   ;; Make mouse wheel / trackpad scrolling less jerky
-  (setq mouse-wheel-scroll-amount '(1
-                                    ((shift) . 5)
-                                    ((control))))
+  (setq mouse-wheel-scroll-amount '(1 ((shift) . 5) ((control))))
   ;; スクロールの加速をOFF
   (setq mouse-wheel-progressive-speed nil)
   ;; Macの場合、スクロールをなめらかにする
