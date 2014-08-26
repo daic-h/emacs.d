@@ -80,8 +80,8 @@
 (define-key global-map (kbd "C-S-i") 'indent-region)
 (define-key global-map (kbd "C-c TAB") #'toggle-truncate-lines)
 
-(define-key global-map (kbd "C-c r") 'query-replace)
-(define-key global-map (kbd "C-c C-c r") 'query-replace-regexp)
+;; (define-key global-map (kbd "C-c r") 'query-replace)
+;; (define-key global-map (kbd "C-c C-c r") 'query-replace-regexp)
 
 ;; 改行にインデントを追加
 (define-key global-map (kbd "RET") 'newline-and-indent)

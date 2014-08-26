@@ -20,7 +20,6 @@
                         (:type github :name elscreen            :pkgname "emacs-jp/elscreen")
                         (:type github :name jaunte              :pkgname "kawaguchi/jaunte.el")
                         (:type github :name google-translate    :pkgname "manzyuk/google-translate")
-                        (:type github :name guide-key           :pkgname "kbkbkbkb1/guide-key")
                         (:type github :name popwin              :pkgname "m2ym/popwin-el" :load-path ("." "misc") :compile nil)
                         (:type github :name goto-chg            :pkgname "emacsmirror/goto-chg")
                         (:type github :name dired-plus          :pkgname "emacsmirror/dired-plus")
@@ -42,10 +41,10 @@
                           haml-mode
                           yaml-mode
                           scss-mode
+                          markdown-mode
                           helm
                           helm-descbinds
                           helm-ls-git
-                          powerline
                           expand-region
                           git-gutter-fringe
                           auto-complete
@@ -61,7 +60,7 @@
                           ace-jump-mode
                           apel
                           navi2ch
-                          session)
+                          visual-regexp)
                         (mapcar 'el-get-as-symbol (mapcar 'el-get-source-name el-get-sources)))))
 
 (provide 'init-el-get)

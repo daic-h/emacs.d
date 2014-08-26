@@ -37,6 +37,7 @@
 (require-init 'init-auto-complete)
 (require-init 'init-fonts)
 (require-init 'init-windows)
+(require-init 'init-visual-regexp)
 ;; (require-init 'init-sessions)
 
 (require-init 'init-howm)
@@ -65,7 +66,6 @@
 (require-init 'init-rotate)
 (require-init 'init-elscreen)
 ;; (require-init 'init-quickrun)
-;; guide-key.el
 ;; multi-term.el
 
 (require-init 'init-cc-mode)
@@ -78,6 +78,7 @@
 (require-init 'init-web-mode)
 (require-init 'init-coffee-mode)
 (require-init 'init-scss-mode)
+(require-init 'init-markdown-mode)
 ;; erlang-mode.el
 ;; go-mode.el
 ;; haml-mode.el

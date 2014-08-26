@@ -6,7 +6,7 @@
                    12
                  14)) ; ASCIIフォントのサイズ [9/10/12/14/15/17/19/20/...]
          (asciifont "Menlo") ; ASCIIフォント
-         (jpfont "SetoFont") ; 日本語フォント
+         (jpfont "Hiragino Maru Gothic ProN") ; 日本語フォント
          (font (format "%s-%d:weight=normal:slant=normal" asciifont size))
          (fontspec (font-spec :family asciifont))
          (jp-fontspec (font-spec :family jpfont))
@@ -38,5 +38,6 @@
 
 ;; Share-TechMono
 ;; Menlo
+;; (jpfont "SetoFont") ; 日本語フォント
 
 (provide 'init-fonts)
