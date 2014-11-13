@@ -1,5 +1,11 @@
 (lazyload (ruby-mode) "ruby-mode"
-  (defun ruby--encoding-comment-required-p () nil))
+  (defun ruby--encoding-comment-required-p () nil)
+
+  (require 'rbenv)
+  (setq rbenv-show-active-ruby-in-modeline nil)
+  (global-rbenv-mode)
+
+  (add-to-list 'electric-pair-pairs '(?| . ?|)))
 
 (add-hook-fn 'ruby-mode-hook
   (setq ruby-indent-level 2)

@@ -41,7 +41,7 @@
 
 (defun count-lines-and-chars ()
   (if mark-active
-      (format " %d lines, %d chars "
+      (format " %3d lines, %4d chars "
               (count-lines (region-beginning) (region-end))
               (- (region-end) (region-beginning)))
     ""))
@@ -62,20 +62,17 @@
 
 ;; Mode line setup
 (setq-default mode-line-position
- '(" "
-   ;; Position, including warning for 80 columns
-   (:propertize "%4l" face mode-line-position-face)
+ '((:propertize "%4l" face mode-line-position-face)
    (:propertize "/" face mode-line-delim-face-1)
    (:eval (number-to-string (count-lines (point-min) (point-max))))
    " "
+   ;; Position, including warning for 80 columns
    (:eval (propertize "%3c" 'face (if (>= (current-column) 80)
                                       'mode-line-80col-face
-                                    'mode-line-position-face)))
-   " "))
+                                    'mode-line-position-face)))))
 
 (setq-default mode-line-format
- '("%e"
-   " "
+ '("%e "
    mode-line-mule-info
    (:eval (count-lines-and-chars))
    mode-line-position
@@ -83,15 +80,15 @@
    ;; directory and buffer/file name
    (:propertize (:eval (shorten-directory default-directory 30)) face mode-line-folder-face)
    (:propertize "%b" face mode-line-filename-face)
+   " "
+   mode-line-modified
    ;; narrow [default -- keep?]
-   " %n"
+   ;; " %n"
    ;; mode indicators: vc, recursive edit, major mode, minor modes, process, global
-   (vc-mode vc-mode)
-   " %["
-   (:propertize mode-name face mode-line-mode-face)
-   "%]"
+   ;; (vc-mode vc-mode)
+   " %[" (:propertize mode-name face mode-line-mode-face) "%]"
    (:propertize (:eval (format-mode-line minor-mode-alist)) face mode-line-minor-mode-face)
-   "  "
+   " "
    (:propertize mode-line-process face mode-line-process-face)
    global-mode-string))
 

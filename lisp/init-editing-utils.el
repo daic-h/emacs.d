@@ -38,6 +38,8 @@
 (transient-mark-mode 1)
 (show-paren-mode 1)
 
+(electric-pair-mode t)
+
 ;; 末尾の空白をbefore-save-hookで削除
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 

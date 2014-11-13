@@ -12,7 +12,7 @@
 ;; personal recipes
 (let ((el-get-sources '((:type github :name helm-gtags          :pkgname "syohex/emacs-helm-gtags" :depends helm)
                         (:type github :name helm-swoop          :pkgname "ShingoFukuyama/helm-swoop" :depends helm)
-                        (:type github :name helm-ag              :pkgname "syohex/emacs-helm-ag" :depends helm)
+                        (:type github :name helm-ag             :pkgname "syohex/emacs-helm-ag" :depends helm)
                         (:type github :name helm-growthforecast :pkgname "daic-h/helm-growthforecast" :depends helm)
                         (:type github :name rotate              :pkgname "daic-h/emacs-rotate")
                         (:type github :name smooth-scroll       :pkgname "k-talo/smooth-scroll.el")
@@ -42,6 +42,7 @@
                           yaml-mode
                           scss-mode
                           markdown-mode
+                          rbenv
                           helm
                           helm-descbinds
                           helm-ls-git

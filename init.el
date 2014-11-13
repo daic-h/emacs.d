@@ -51,7 +51,7 @@
 (require-init 'init-diff-mode)
 (require-init 'init-smooth-scroll)
 (require-init 'init-ace-jump-mode)
-(require-init 'init-flex-autopair)
+;; (require-init 'init-flex-autopair)
 (require-init 'init-point-undo)
 (require-init 'init-goto-chg)
 
@@ -61,7 +61,7 @@
 (require-init 'init-git-gutter)
 
 (require-init 'init-popwin)
-(require-init 'init-google-translate)
+;; (require-init 'init-google-translate)
 (require-init 'init-jaunte)
 (require-init 'init-rotate)
 (require-init 'init-elscreen)
