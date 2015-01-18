@@ -86,7 +86,10 @@
    ;; " %n"
    ;; mode indicators: vc, recursive edit, major mode, minor modes, process, global
    ;; (vc-mode vc-mode)
-   " %[" (:propertize mode-name face mode-line-mode-face) "%]"
+   ;; " %["
+   " "
+   (:propertize mode-name face mode-line-mode-face)
+   ;; "%]"
    (:propertize (:eval (format-mode-line minor-mode-alist)) face mode-line-minor-mode-face)
    " "
    (:propertize mode-line-process face mode-line-process-face)
@@ -98,7 +101,7 @@
                                      :inverse-video nil
                                      :weight normal
                                      :height 120
-                                     :box (:line-width 1 :color "#eab700" :style nil)))))
+                                     :box (:line-width 1 :color "gray20" :style nil)))))
  '(mode-line-inactive           ((t (:foreground "gray80"
                                      :background "gray30"
                                      :inverse-video nil

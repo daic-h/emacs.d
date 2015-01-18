@@ -16,6 +16,7 @@
 (require-init 'init-site-lisp)
 (require-init 'init-el-get)
 (require-init 'init-exec-path)
+(require-init 'init-directory)
 
 ;;----------------------------------------------------------------------------
 ;; Load configs for specific features and modes
@@ -28,6 +29,7 @@
 (require-init 'init-uniquify)
 (require-init 'init-flycheck)
 (require-init 'init-vc-mode)
+(require-init 'init-tramp)
 
 (require-init 'init-helm)
 (require-init 'init-helm-ext)
@@ -51,21 +53,20 @@
 (require-init 'init-diff-mode)
 (require-init 'init-smooth-scroll)
 (require-init 'init-ace-jump-mode)
-;; (require-init 'init-flex-autopair)
+(require-init 'init-flex-autopair)
 (require-init 'init-point-undo)
 (require-init 'init-goto-chg)
 
 (require-init 'init-editing-utils)
-
 (require-init 'init-git)
 (require-init 'init-git-gutter)
 
 (require-init 'init-popwin)
-;; (require-init 'init-google-translate)
 (require-init 'init-jaunte)
 (require-init 'init-rotate)
 (require-init 'init-elscreen)
-;; (require-init 'init-quickrun)
+(require-init 'init-quickrun)
+;; (require-init 'init-google-translate)
 ;; multi-term.el
 
 (require-init 'init-cc-mode)

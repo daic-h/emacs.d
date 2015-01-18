@@ -3,10 +3,11 @@
 
 (define-key global-map (kbd "C-c , ,") 'howm-menu)
 
-(setq howm-directory (concat user-emacs-directory "howm/memo")
+(setq howm-view-title-header "#"
+      howm-directory (concat user-emacs-directory "howm/memo")
       howm-menu-lang 'ja
       howm-menu-top nil
-      howm-file-name-format "%Y%m%d-%H%M%S.howm"
+      howm-file-name-format "%Y%m%d-%H%M%S.md"
       ;; 読み書き共通
       howm-process-coding-system 'utf-8-unix
       ;; メニューと履歴を検索対象から除外するために別ディレクトリへ

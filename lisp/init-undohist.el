@@ -1,5 +1,3 @@
-(setq undohist-directory (expand-file-name "~/.undohist"))
-
 (require 'undohist)
 (undohist-initialize)
 

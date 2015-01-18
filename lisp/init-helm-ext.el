@@ -40,8 +40,11 @@
 ;;
 ;; helm-ag
 ;;
-(lazyload (helm-ag) "helm-ag")
+(lazyload (helm-ag) "helm-ag"
+  (setq helm-ag-source-type 'one-line))
 (global-set-key (kbd "C-c C-'") 'helm-ag)
-;; (global-set-key (kbd "C-c C-t") 'helm-ag-pop-stack)
+(global-set-key (kbd "C-c C-t") 'helm-ag-pop-stack)
+
+
 
 (provide 'init-helm-ext)

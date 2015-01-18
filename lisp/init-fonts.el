@@ -2,7 +2,7 @@
 
 ;; 以下が Mac 用のフォント設定
 (when (memq window-system '(mac ns))
-  (let* ((size 15)
+  (let* ((size 13)
          (jpfont "Hiragino Maru Gothic ProN")
          (asciifont "Monaco")
          (h (* size 10)))

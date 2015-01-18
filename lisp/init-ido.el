@@ -1,7 +1,4 @@
 ;; Use C-f during file selection to switch to regular find-file
-(setq ido-save-directory-list-file
-      (concat user-emacs-directory "tmp/cache/ido." (system-name) ".last"))
-
 (ido-mode t)
 (ido-everywhere t)
 (setq ido-enable-flex-matching t)

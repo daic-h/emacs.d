@@ -1,5 +1,4 @@
-;; (add-to-list 'load-path "~/.emacs.d/lisp/themes")
-(add-to-list 'custom-theme-load-path "~/.emacs.d/lisp/themes")
+(add-to-list 'custom-theme-load-path (concat user-emacs-directory "lisp/themes"))
 
 (let ((theme 'railscasts))
   (load-theme theme t)

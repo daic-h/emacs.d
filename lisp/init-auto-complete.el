@@ -1,6 +1,5 @@
 (require 'auto-complete-config)
 
-(setq ac-comphist-file (concat user-emacs-directory "tmp/cache/ac-comphist.dat." (system-name)))
 (ac-config-default)
 (setq ac-auto-start 2)         ;; n文字以上の単語の時に補完を開始
 (setq ac-delay 0.05)           ;; n秒後に補完開始

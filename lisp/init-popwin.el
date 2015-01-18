@@ -32,6 +32,9 @@
 (push '("*Google Translate*" :height 14 :noselect t :position bottom)
       popwin:special-display-config)
 
+;; quickrun
+;; (push '("*quickrun*") popwin:special-display-config)
+
 (global-set-key (kbd "C-x C-p") popwin:keymap)
 
 ;; twittering-modeをpopup

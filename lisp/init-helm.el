@@ -7,6 +7,7 @@
 (setq helm-idle-delay 0.1)
 (setq helm-input-idle-delay 0)
 (setq helm-candidate-number-limit 500)
+(setq helm-ff-transformer-show-only-basename nil)
 
 (define-key helm-map (kbd "C-h") 'delete-backward-char)
 (define-key helm-map (kbd "C-k") 'kill-line)

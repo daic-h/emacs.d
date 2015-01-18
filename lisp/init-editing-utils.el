@@ -22,23 +22,15 @@
  show-trailing-whitespace t
  truncate-lines nil
  truncate-partial-width-windows nil
-
  make-backup-files nil
- backup-directory-alist (list (cons ""  (concat user-emacs-directory "tmp/backup")))
- bookmark-default-file (concat user-emacs-directory "tmp/.bookmarks." (system-name) ".el")
-
  delete-auto-save-files t
- auto-save-default nil
- auto-save-file-name-transforms `((".*" ,(expand-file-name "~/.emacs.d/tmp/backup/") t))
- auto-save-list-file-prefix (concat user-emacs-directory "tmp/saves/")
-
- abbrev-file-name (concat user-emacs-directory "tmp/abbrev_defs"))
+ auto-save-default nil)
 
 (blink-cursor-mode 0)
 (transient-mark-mode 1)
 (show-paren-mode 1)
 
-(electric-pair-mode t)
+;; (electric-pair-mode t)
 
 ;; 末尾の空白をbefore-save-hookで削除
 (add-hook 'before-save-hook 'delete-trailing-whitespace)

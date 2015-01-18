@@ -6,4 +6,5 @@ init-local.el
 *.elc
 org/
 howm/
+tmp/
 elpm

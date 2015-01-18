@@ -17,7 +17,7 @@
                         (:type github :name rotate              :pkgname "daic-h/emacs-rotate")
                         (:type github :name smooth-scroll       :pkgname "k-talo/smooth-scroll.el")
                         (:type github :name json-reformat       :pkgname "gongo/json-reformat")
-                        (:type github :name elscreen            :pkgname "emacs-jp/elscreen")
+                        (:type github :name elscreen-jp         :pkgname "emacs-jp/elscreen")
                         (:type github :name jaunte              :pkgname "kawaguchi/jaunte.el")
                         (:type github :name google-translate    :pkgname "manzyuk/google-translate")
                         (:type github :name popwin              :pkgname "m2ym/popwin-el" :load-path ("." "misc") :compile nil)
@@ -59,7 +59,6 @@
                           flex-autopair
                           auto-highlight-symbol
                           ace-jump-mode
-                          apel
                           navi2ch
                           visual-regexp)
                         (mapcar 'el-get-as-symbol (mapcar 'el-get-source-name el-get-sources)))))
