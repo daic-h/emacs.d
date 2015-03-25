@@ -3,11 +3,15 @@
 
 (remove-hook 'kill-emacs-hook 'helm-adaptive-save-history)
 
+(defadvice helm-buffers-sort-transformer (around ignore activate)
+  (setq ad-return-value (ad-get-arg 0)))
+
 ;; configuration helm variable
 (setq helm-idle-delay 0.1)
 (setq helm-input-idle-delay 0)
 (setq helm-candidate-number-limit 500)
 (setq helm-ff-transformer-show-only-basename nil)
+(setq helm-buffer-max-length 50)
 
 (define-key helm-map (kbd "C-h") 'delete-backward-char)
 (define-key helm-map (kbd "C-k") 'kill-line)
@@ -21,46 +25,5 @@
 (global-set-key (kbd "M-r") 'helm-resume)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key (kbd "C-s") 'helm-occur)
-
-;; extentions
-
-;;
-;; descbinds
-;;
-(require 'helm-descbinds)
-(helm-descbinds-mode 1)
-
-;;
-;; helm-gtags
-;;
-(lazyload (helm-gtags-mode) "helm-gtags"
-  ;; customize
-  (setq helm-gtags-path-style 'relative)
-  (setq helm-gtags-ignore-case t)
-  (setq helm-gtags-read-only nil)
-  ;; key bindings
-  (local-set-key (kbd "M-t") 'helm-gtags-find-tag)
-  (local-set-key (kbd "M-r") 'helm-gtags-find-rtag)
-  (local-set-key (kbd "M-s") 'helm-gtags-find-symbol)
-  (local-set-key (kbd "C-t") 'helm-gtags-pop-stack))
-
-;;
-;; helm-swoop
-;;
-(lazyload (helm-swoop helm-multi-swoop helm-multi-swoop-all) "helm-swoop")
-(global-set-key (kbd "M-i") 'helm-swoop)
-(global-set-key (kbd "C-c M-i") 'helm-multi-swoop)
-(global-set-key (kbd "C-x M-i") 'helm-multi-swoop-all)
-
-;;
-;; helm-ls-git
-;;
-(lazyload (helm-ls-git-ls) "helm-ls-git")
-(global-set-key (kbd "C-'") 'helm-ls-git-ls)
-
-;;
-;; helm-growthforecast
-;;
-(lazyload (helm-growthforecast) "helm-growthforecast")
 
 (provide 'init-helm)

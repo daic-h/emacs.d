@@ -13,6 +13,7 @@
 (push '("*Backtrace*" :height 20 :noselect t)
       popwin:special-display-config)
 
+;; helm
 (push '("^\*helm.+\*$" :regexp t :height 20)
       popwin:special-display-config)
 
@@ -24,16 +25,13 @@
 (push '(" *auto-async-byte-compile*" :height 14 :noselect t :position bottom)
       popwin:special-display-config)
 
-;; el-bundler
-(push '("*ElBundler:Command*" :height 14 :noselect t :position bottom)
-      popwin:special-display-config)
-
 ;; google-translate
 (push '("*Google Translate*" :height 14 :noselect t :position bottom)
       popwin:special-display-config)
 
 ;; quickrun
-;; (push '("*quickrun*") popwin:special-display-config)
+(push '("*quickrun*" :height 25 :noselect t :position bottom)
+      popwin:special-display-config)
 
 (global-set-key (kbd "C-x C-p") popwin:keymap)
 

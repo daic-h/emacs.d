@@ -110,9 +110,9 @@
   (interactive)
   (let* ((file (expand-file-name
                 (format-time-string "%Y/%m/%Y-%m-%d-%H%M%S." (current-time))
-                (concat user-emacs-directory "tmp/junk"))
+                (concat user-emacs-directory "tmp/junk")))
          (dir (file-name-directory file)))
     (make-directory dir t)
-    (find-file-other-window (read-string "Junk Code: " file)))))
+    (find-file-other-window (read-string "Junk Code: " file))))
 
 (provide 'init-user-function)

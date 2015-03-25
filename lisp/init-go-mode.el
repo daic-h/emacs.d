@@ -1,4 +1,4 @@
-(autoload 'go-mode "go-mode" nil t)
+(lazyload (go-mode) "go-mode")
 
 (add-hook-fn 'go-mode-hook
  (setq c-basic-offset 4)
@@ -9,4 +9,4 @@
  ;; Goはタブ使うのでしょうがなく
  (face-remap-add-relative 'my-face-b-2 '(:background nil)) )
 
-(add-to-auto-mode-fn 'go-mode '("\\.go$"))
+(add-auto-mode 'go-mode "\\.go$")

@@ -1,5 +1,7 @@
 (add-to-list 'custom-theme-load-path (concat user-emacs-directory "lisp/themes"))
 
+;; darktooth
+;; railscasts
 (let ((theme 'railscasts))
   (load-theme theme t)
   (let ((bg (background-color-at-point)))

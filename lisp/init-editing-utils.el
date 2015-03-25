@@ -132,22 +132,12 @@
 ;;----------------------------------------------------------------------------
 ;; 全角スペース、タブの強調表示
 ;;----------------------------------------------------------------------------
-(defface my-face-b-1 '((t (:background "medium aquamarine"))) nil :group 'my-face)
-(defface my-face-b-2 '((t (:background "medium aquamarine"))) nil :group 'my-face)
-(defvar  my-face-b-1 'my-face-b-1)
-(defvar  my-face-b-2 'my-face-b-2)
-(make-variable-buffer-local 'my-face-b-1)
-(make-variable-buffer-local 'my-face-b-2)
+(require 'whitespace)
+(setq whitespace-style '(tabs tab-mark spaces space-mark))
+(setq whitespace-space-regexp "\\(\x3000+\\)")
+(setq whitespace-display-mappings '((space-mark ?\x3000 [?\□])
+                                    (tab-mark ?\t [?\xBB ?\t])))
 
-(defadvice font-lock-mode (before my-font-lock-mode ())
-  (font-lock-add-keywords major-mode '(("　" 0 my-face-b-1 append)
-                                       ("\t" 0 my-face-b-2 append))))
-
-(defun font-lock-mode-fn ()
-  (if font-lock-mode nil (font-lock-mode t)))
-
-(ad-activate 'font-lock-mode)
-(ad-enable-advice 'font-lock-mode 'before 'my-font-lock-mode)
-(add-hook 'find-file-hooks 'font-lock-mode-fn t)
+(global-whitespace-mode 1)
 
 (provide 'init-editing-utils)

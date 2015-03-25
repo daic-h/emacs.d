@@ -70,4 +70,11 @@
                    (abbreviate-file-name (buffer-file-name))
                  "%b"))))
 
+;; ** New Core Text based font backend for Mac OS X 10.5 and newer.
+;; To use the old font backend, use the following on the command line:
+;;   % defaults write org.gnu.Emacs FontBackend ns
+;; GNUstep and Mac OS X 10.4 use the old font backend.
+
+;; defaults delete org.gnu.Emacs FontBackend
+
 (provide 'init-gui-frames)

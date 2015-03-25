@@ -40,7 +40,6 @@
 (require-init 'init-fonts)
 (require-init 'init-windows)
 (require-init 'init-visual-regexp)
-;; (require-init 'init-sessions)
 
 (require-init 'init-howm)
 (require-init 'init-redo)
@@ -58,6 +57,7 @@
 (require-init 'init-goto-chg)
 
 (require-init 'init-editing-utils)
+(require-init 'init-volatile-highlights)
 (require-init 'init-git)
 (require-init 'init-git-gutter)
 

@@ -45,6 +45,4 @@
 (global-set-key (kbd "C-c C-'") 'helm-ag)
 (global-set-key (kbd "C-c C-t") 'helm-ag-pop-stack)
 
-
-
 (provide 'init-helm-ext)
