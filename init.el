@@ -12,6 +12,7 @@
 ;;----------------------------------------------------------------------------
 ;; Bootstrap config
 ;;----------------------------------------------------------------------------
+(require-init 'init-path)
 (require-init 'init-utils)
 (require-init 'init-site-lisp)
 (require-init 'init-el-get)

@@ -1,4 +1,5 @@
-(setq el-get-dir (expand-file-name "site-lisp/el-get" user-emacs-directory))
+;; (setq el-get-dir (expand-file-name "site-lisp/el-get" user-emacs-directory))
+(setq el-get-dir "~/.el-get")
 (setq el-get-verbose t)
 (setq-default el-get-emacswiki-base-url "http://raw.github.com/emacsmirror/emacswiki.org/master/")
 

@@ -30,26 +30,10 @@
 (transient-mark-mode 1)
 (show-paren-mode 1)
 
-;; (electric-pair-mode t)
-
-;; 末尾の空白をbefore-save-hookで削除
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-
 (when *is-a-mac*
   (setq-default locate-command "mdfind"))
 
-;; But don't show trailing whitespace in SQLi, inf-ruby etc.
-(dolist (hook '(special-mode-hook
-                eww-mode
-                term-mode-hook
-                comint-mode-hook
-                compilation-mode-hook
-                twittering-mode-hook
-                minibuffer-setup-hook))
-  (add-hook hook (lambda () (setq show-trailing-whitespace nil))))
-
-(custom-set-faces
- '(trailing-whitespace ((t (:foreground "SteelBlue" :underline t)))))
+;; (electric-pair-mode t)
 
 ;;----------------------------------------------------------------------------
 ;; Don't disable narrowing commands
@@ -133,11 +117,37 @@
 ;; 全角スペース、タブの強調表示
 ;;----------------------------------------------------------------------------
 (require 'whitespace)
-(setq whitespace-style '(tabs tab-mark spaces space-mark))
+(setq whitespace-style '(tab-mark space-mark))
 (setq whitespace-space-regexp "\\(\x3000+\\)")
 (setq whitespace-display-mappings '((space-mark ?\x3000 [?\□])
                                     (tab-mark ?\t [?\xBB ?\t])))
-
 (global-whitespace-mode 1)
+
+;;----------------------------------------------------------------------------
+;; 末尾の空白削除
+;;----------------------------------------------------------------------------
+(setq delete-trailing-whitespace-exclude-patterns nil)
+
+(defun delete-trailing-whitespace-with-exclude-pattern ()
+  (interactive)
+  (dolist (pattern delete-trailing-whitespace-exclude-patterns)
+    (unless (string-match pattern buffer-file-name)
+      (delete-trailing-whitespace))))
+
+(add-hook 'before-save-hook 'delete-trailing-whitespace-with-exclude-pattern)
+
+;; But don't show trailing whitespace in SQLi, inf-ruby etc.
+(dolist (hook '(special-mode-hook
+                eww-mode
+                markdown-mode-hook
+                term-mode-hook
+                comint-mode-hook
+                compilation-mode-hook
+                twittering-mode-hook
+                minibuffer-setup-hook))
+  (add-hook hook (lambda () (setq show-trailing-whitespace nil))))
+
+(custom-set-faces
+ '(trailing-whitespace ((t (:foreground "SteelBlue" :underline t)))))
 
 (provide 'init-editing-utils)
