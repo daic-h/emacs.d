@@ -54,7 +54,7 @@
 (require-init 'init-smooth-scroll)
 (require-init 'init-ace-jump-mode)
 (require-init 'init-flex-autopair)
-(require-init 'init-point-undo)
+;; (require-init 'init-point-undo)
 (require-init 'init-goto-chg)
 
 (require-init 'init-editing-utils)

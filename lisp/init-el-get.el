@@ -13,6 +13,7 @@
 
 ;; personal recipes
 (let ((el-get-sources '((:type github :name helm-growthforecast :pkgname "daic-h/helm-growthforecast")
+                        ;; (:type github :name helm-bm             :pkgname "yasuyk/helm-bm" :depends (helm bm s cl-lib))
                         (:type github :name rotate              :pkgname "daic-h/emacs-rotate")
                         (:type github :name smooth-scroll       :pkgname "k-talo/smooth-scroll.el")
                         (:type github :name json-reformat       :pkgname "gongo/json-reformat")
