@@ -76,6 +76,7 @@
 (require-init 'init-yaml-mode)
 (require-init 'init-php-mode)
 (require-init 'init-js2-mode)
+(require-init 'init-jsx-mode)
 (require-init 'init-json-reformat)
 (require-init 'init-web-mode)
 (require-init 'init-coffee-mode)

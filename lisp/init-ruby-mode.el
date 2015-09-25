@@ -14,7 +14,7 @@
 (add-auto-mode 'ruby-mode
                "\\.rb\\'" "Rakefile\\'" "\\.rake\\'" "\\.rxml\\'"
                "\\.rjs\\'" "\\.irbrc\\'" "\\.pryrc\\'"
-               "\\.[mj]?builder\\'" "\\.ru\\'"
+               "\\.[mj]?builder\\'" "\\.ru\\'" "Brewfile\\'"
                "\\.gemspec\\'" "Gemfile\\'" "Kirkfile\\'")
 
 (provide 'init-ruby-mode)

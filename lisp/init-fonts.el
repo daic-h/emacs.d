@@ -1,6 +1,5 @@
-;; 以下が Mac 用のフォント設定
 (when (memq window-system '(mac ns))
-  (let* ((asciifont "Monaco")
+  (let* ((asciifont "monaco")
          (jpfont "Hiragino Maru Gothic ProN")
          (size 15)
          (h (* size 10)))
@@ -14,7 +13,7 @@
 
   ;; フォントサイズの比を設定
   (dolist (elt '(("^-apple-hiragino.*" . 1.2)
-                 (".*-Hiragino Maru Gothic ProN-.*" . 1.2)
+                 (".*-Hiragino Maru Gothic ProN-.*" . 1.0)
                  (".*osaka-bold.*" . 1.2)
                  (".*osaka-medium.*" . 1.2)
                  (".*courier-bold-.*-mac-roman" . 1.0)

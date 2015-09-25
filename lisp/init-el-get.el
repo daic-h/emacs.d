@@ -13,8 +13,8 @@
 
 ;; personal recipes
 (let ((el-get-sources '((:type github :name helm-growthforecast :pkgname "daic-h/helm-growthforecast")
-                        ;; (:type github :name helm-bm             :pkgname "yasuyk/helm-bm" :depends (helm bm s cl-lib))
                         (:type github :name rotate              :pkgname "daic-h/emacs-rotate")
+                        (:type github :name jsx-mode            :pkgname "jsx/jsx-mode.el" :load-path ("src"))
                         (:type github :name smooth-scroll       :pkgname "k-talo/smooth-scroll.el")
                         (:type github :name json-reformat       :pkgname "gongo/json-reformat")
                         (:type github :name elscreen            :pkgname "emacs-jp/elscreen")
@@ -28,6 +28,9 @@
                         (:type github :name sudo-ext            :pkgname "emacsmirror/sudo-ext")
                         (:type github :name multi-term          :pkgname "emacsmirror/multi-term")
                         (:type github :name sequential-command  :pkgname "emacsmirror/sequential-command")
+                        (:type github :name omni-scratch        :pkgname "AdrieanKhisbe/omni-scratch.el")
+                        (:type github :name railscasts-theme :pkgname "itiut/railscasts-theme"
+                               :post-init (add-to-list 'custom-theme-load-path default-directory))
                         (:type http-tar :name howm :options ("xzf") :url "http://howm.sourceforge.jp/a/howm-1.4.2.tar.gz")))
       (el-get-builtin-sources '(php-mode
                                 js2-mode
@@ -39,6 +42,7 @@
                                 yaml-mode
                                 scss-mode
                                 markdown-mode
+                                jsx-mode
                                 rbenv
                                 helm
                                 helm-descbinds
@@ -60,9 +64,11 @@
                                 auto-highlight-symbol
                                 ace-jump-mode
                                 navi2ch
-                                visual-regexp
+                                visual-regexp-steroids
+                                pcre2el
                                 popwin
-                                volatile-highlights)))
+                                volatile-highlights
+                                ido-vertical-mode)))
   ;; Packages to install from el-get
   (el-get 'sync (append el-get-builtin-sources
                         (mapcar 'el-get-as-symbol (mapcar 'el-get-source-name el-get-sources)))))
