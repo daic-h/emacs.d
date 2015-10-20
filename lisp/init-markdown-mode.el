@@ -1,6 +1,7 @@
 (lazyload (markdown-mode) "markdown-mode")
 
-(dolist (pattern '("\\.md$" "\\.markdown$"))
-  (add-to-list 'delete-trailing-whitespace-exclude-patterns pattern))
+(add-hook 'markdown-mode-hook
+          '(lambda ()
+             (set (make-local-variable 'whitespace-action) nil)))
 
 (provide 'init-markdown-mode)

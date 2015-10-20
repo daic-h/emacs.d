@@ -56,6 +56,7 @@
 (require-init 'init-flex-autopair)
 ;; (require-init 'init-point-undo)
 (require-init 'init-goto-chg)
+(require-init 'init-eww)
 
 (require-init 'init-editing-utils)
 (require-init 'init-volatile-highlights)

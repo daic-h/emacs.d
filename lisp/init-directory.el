@@ -43,6 +43,8 @@
  abbrev-file-name (concat my-tmp-dir "abbrev_defs")
  ;; ido
  ido-save-directory-list-file (my-set-history "ido.list-" (system-name))
+ ;; url-cache
+ url-cache-directory (concat my-tmp-dir "url/cache")
 
  ;; 外部拡張
 

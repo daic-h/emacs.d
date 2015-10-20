@@ -115,4 +115,17 @@
     (make-directory dir t)
     (find-file-other-window (read-string "Junk Code: " file))))
 
+;; 変更されてないバッファーを全部閉じる。ただし、*...* 名（*scratch* など）は除く。
+;;_______________________________________________________________
+(defun close-all-unmodified-buffer ()
+  (interactive)
+  (let ((buffers (buffer-list)))
+    (mapcar
+     #'(lambda (buf)
+         (if (and (not (buffer-modified-p buf))
+                  (not (string-match "^\\*.+\\*$" (buffer-name buf))))
+             (kill-buffer buf)))
+     buffers))
+  (switch-to-buffer "*scratch*"))
+
 (provide 'init-user-function)
