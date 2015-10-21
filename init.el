@@ -26,6 +26,7 @@
 (require-init 'init-modeline)
 (require-init 'init-osx-keys)
 (require-init 'init-gui-frames)
+(require-init 'init-whitespace)
 (require-init 'init-dired)
 (require-init 'init-uniquify)
 (require-init 'init-flycheck)

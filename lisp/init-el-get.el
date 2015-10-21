@@ -1,4 +1,3 @@
-;; (setq el-get-dir (expand-file-name "site-lisp/el-get" user-emacs-directory))
 (setq el-get-dir "~/.el-get")
 (setq el-get-verbose t)
 (setq-default el-get-emacswiki-base-url "http://raw.github.com/emacsmirror/emacswiki.org/master/")
@@ -29,7 +28,7 @@
                         (:type github :name multi-term          :pkgname "emacsmirror/multi-term")
                         (:type github :name sequential-command  :pkgname "emacsmirror/sequential-command")
                         (:type github :name omni-scratch        :pkgname "AdrieanKhisbe/omni-scratch.el")
-                        (:type github :name railscasts-theme :pkgname "itiut/railscasts-theme"
+                        (:type github :name railscasts-theme    :pkgname "itiut/railscasts-theme"
                                :post-init (add-to-list 'custom-theme-load-path default-directory))
                         (:type http-tar :name howm :options ("xzf") :url "http://howm.sourceforge.jp/a/howm-1.4.2.tar.gz")))
       (el-get-builtin-sources '(php-mode

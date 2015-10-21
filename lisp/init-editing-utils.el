@@ -19,7 +19,6 @@
  line-spacing 0
  mouse-yank-at-point t
  set-mark-command-repeat-pop t
- show-trailing-whitespace t
  truncate-lines nil
  truncate-partial-width-windows nil
  make-backup-files nil
@@ -112,56 +111,5 @@
            transient-mark-mode (not mark-active))
       (copy-line)
     ad-do-it))
-
-;;----------------------------------------------------------------------------
-;; 全角スペース、タブの強調表示
-;;----------------------------------------------------------------------------
-(require 'whitespace)
-(defun my/disable-trailing-mode-hook ()
-  "Disable show tail whitespace."
-  (setq show-trailing-whitespace nil))
-(defvar my/disable-trailing-modes
-  '(comint-mode
-    eshell-mode
-    eww-mode
-    term-mode
-    twittering-mode))
-(mapc
- (lambda (mode)
-   (add-hook (intern (concat (symbol-name mode) "-hook"))
-             'my/disable-trailing-mode-hook))
- my/disable-trailing-modes)
-(setq whitespace-style '(tab-mark space-mark))
-(setq whitespace-space-regexp "\\(\x3000+\\)")
-(setq whitespace-display-mappings '((space-mark ?\x3000 [?\□])
-                                    (tab-mark ?\t [?\xBB ?\t])))
-(global-whitespace-mode 1)
-
-;;----------------------------------------------------------------------------
-;; 末尾の空白削除
-;;----------------------------------------------------------------------------
-(setq delete-trailing-whitespace-exclude-patterns nil)
-
-(defun delete-trailing-whitespace-with-exclude-pattern ()
-  (interactive)
-  (dolist (pattern delete-trailing-whitespace-exclude-patterns)
-    (unless (string-match pattern buffer-file-name)
-      (delete-trailing-whitespace))))
-
-(add-hook 'before-save-hook 'delete-trailing-whitespace-with-exclude-pattern)
-
-;; But don't show trailing whitespace in SQLi, inf-ruby etc.
-(dolist (hook '(special-mode-hook
-                eww-mode
-                markdown-mode-hook
-                term-mode-hook
-                comint-mode-hook
-                compilation-mode-hook
-                twittering-mode-hook
-                minibuffer-setup-hook))
-  (add-hook hook (lambda () (setq show-trailing-whitespace nil))))
-
-(custom-set-faces
- '(trailing-whitespace ((t (:foreground "SteelBlue" :underline t)))))
 
 (provide 'init-editing-utils)
