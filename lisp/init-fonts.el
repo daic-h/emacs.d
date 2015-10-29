@@ -1,5 +1,5 @@
 (when (memq window-system '(mac ns))
-  (let* ((asciifont "monaco")
+  (let* ((asciifont "Menlo")
          (jpfont "Hiragino Maru Gothic ProN")
          (size 15)
          (h (* size 10)))
@@ -12,13 +12,13 @@
     (set-fontset-font t '(#x0080 . #x024F) asciifont))
 
   ;; フォントサイズの比を設定
-  (dolist (elt '(("^-apple-hiragino.*" . 1.2)
-                 (".*-Hiragino Maru Gothic ProN-.*" . 1.0)
+  (dolist (elt '((".*-Hiragino Maru Gothic ProN-.*" . 1.0)
+                 ("^-apple-hiragino.*" . 1.2)
                  (".*osaka-bold.*" . 1.2)
                  (".*osaka-medium.*" . 1.2)
-                 (".*courier-bold-.*-mac-roman" . 1.0)
                  (".*monaco cy-bold-.*-mac-cyrillic" . 0.9)
                  (".*monaco-bold-.*-mac-roman" . 0.9)
+                 (".*courier-bold-.*-mac-roman" . 1.0)
                  ("-cdac$" . 1.3)))
     (add-to-list 'face-font-rescale-alist elt))
 
