@@ -69,8 +69,6 @@
 (require-init 'init-rotate)
 (require-init 'init-elscreen)
 (require-init 'init-quickrun)
-;; (require-init 'init-google-translate)
-;; multi-term.el
 
 (require-init 'init-cc-mode)
 (require-init 'init-shell-script-mode)
@@ -84,14 +82,8 @@
 (require-init 'init-coffee-mode)
 (require-init 'init-scss-mode)
 (require-init 'init-markdown-mode)
-;; erlang-mode.el
-;; go-mode.el
-;; haml-mode.el
-;; scala-mode2.el
-;; scheme-mode.el
 
 (require-init 'init-navi2ch)
-(require-init 'init-twittering-mode)
 
 (require-init 'init-misc)
 (require-init 'init-user-function)

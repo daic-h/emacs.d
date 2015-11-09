@@ -19,6 +19,9 @@
                         (:type github :name elscreen            :pkgname "emacs-jp/elscreen")
                         (:type github :name jaunte              :pkgname "kawaguchi/jaunte.el")
                         (:type github :name google-translate    :pkgname "manzyuk/google-translate")
+                        (:type github :name omni-scratch        :pkgname "AdrieanKhisbe/omni-scratch.el")
+                        (:type github :name railscasts-theme    :pkgname "itiut/railscasts-theme"
+                               :post-init (add-to-list 'custom-theme-load-path default-directory))
                         (:type github :name goto-chg            :pkgname "emacsmirror/goto-chg")
                         (:type github :name dired-plus          :pkgname "emacsmirror/dired-plus")
                         (:type github :name redo-plus           :pkgname "emacsmirror/redo-plus")
@@ -27,10 +30,8 @@
                         (:type github :name sudo-ext            :pkgname "emacsmirror/sudo-ext")
                         (:type github :name multi-term          :pkgname "emacsmirror/multi-term")
                         (:type github :name sequential-command  :pkgname "emacsmirror/sequential-command")
-                        (:type github :name omni-scratch        :pkgname "AdrieanKhisbe/omni-scratch.el")
-                        (:type github :name railscasts-theme    :pkgname "itiut/railscasts-theme"
-                               :post-init (add-to-list 'custom-theme-load-path default-directory))
                         (:type http-tar :name howm :options ("xzf") :url "http://howm.sourceforge.jp/a/howm-1.4.2.tar.gz")))
+      ;; builtin recipes
       (el-get-builtin-sources '(php-mode
                                 js2-mode
                                 scala-mode2
@@ -54,7 +55,6 @@
                                 auto-complete
                                 flycheck
                                 exec-path-from-shell
-                                twittering-mode
                                 undohist
                                 multiple-cursors
                                 region-bindings-mode

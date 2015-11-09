@@ -1,6 +1,6 @@
 (lazyload (quickrun quickrun/exec-rspec) "quickrun")
 
-(global-set-key (kbd "C-c C-q") 'quickrun/exec-rspec)
+;; (global-set-key (kbd "C-c C-q") 'quickrun/exec-rspec)
 ;; (global-set-key (kbd "<f5>") 'quickrun)
 ;; (global-set-key (kbd "M-<f5>") 'quickrun-compile-only)
 

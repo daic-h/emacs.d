@@ -62,6 +62,7 @@
 
 ;; 改行にインデントを追加
 (define-key global-map (kbd "RET") 'newline-and-indent)
+(electric-indent-mode -1)
 
 ;; ¥の代わりにバックスラッシュを入力する
 (define-key global-map [?¥] [?\\])
