@@ -115,6 +115,10 @@
     (make-directory dir t)
     (find-file-other-window (read-string "Junk Code: " file))))
 
+(defun find-junk-file ()
+  (interactive)
+  (ido-find-file-in-dir (concat user-emacs-directory "tmp/junk")))
+
 ;; 変更されてないバッファーを全部閉じる。ただし、*...* 名（*scratch* など）は除く。
 ;;_______________________________________________________________
 (defun close-all-unmodified-buffer ()

@@ -22,6 +22,7 @@
                         (:type github :name omni-scratch        :pkgname "AdrieanKhisbe/omni-scratch.el")
                         (:type github :name railscasts-theme    :pkgname "itiut/railscasts-theme"
                                :post-init (add-to-list 'custom-theme-load-path default-directory))
+                        (:type github :name flycheck-rust       :pkgname "flycheck/flycheck-rust")
                         (:type github :name goto-chg            :pkgname "emacsmirror/goto-chg")
                         (:type github :name dired-plus          :pkgname "emacsmirror/dired-plus")
                         (:type github :name redo-plus           :pkgname "emacsmirror/redo-plus")
@@ -43,6 +44,9 @@
                                 scss-mode
                                 markdown-mode
                                 jsx-mode
+                                rust-mode
+                                toml-mode
+                                graphviz-dot-mode
                                 rbenv
                                 helm
                                 helm-descbinds

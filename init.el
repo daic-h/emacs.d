@@ -16,7 +16,7 @@
 (require-init 'init-utils)
 (require-init 'init-site-lisp)
 (require-init 'init-el-get)
-(require-init 'init-exec-path)
+;; (require-init 'init-exec-path)
 (require-init 'init-directory)
 
 ;;----------------------------------------------------------------------------
@@ -82,6 +82,9 @@
 (require-init 'init-coffee-mode)
 (require-init 'init-scss-mode)
 (require-init 'init-markdown-mode)
+(require-init 'init-rust-mode)
+(require-init 'init-toml-mode)
+(require-init 'init-graphviz-dot-mode)
 
 (require-init 'init-navi2ch)
 

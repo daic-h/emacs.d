@@ -15,4 +15,6 @@
 
 (add-hook 'emacs-lisp-mode-hook #'my-emacs-lisp-hook)
 
+(add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
+
 (provide 'init-flycheck)
