@@ -4,6 +4,7 @@
   (set-face-foreground 'jaunte-hint-face2 "white")
   (set-face-background 'jaunte-hint-face2 "#657b83"))
 
-(global-set-key (kbd "C-c C-j") 'jaunte)
+;; (define-key global-map (kbd "C-c SPC") 'jaunte)
+(global-set-key (kbd "C-c j") 'jaunte)
 
 (provide 'init-jaunte)

@@ -4,8 +4,9 @@
 (require 'cl)
 (setq whitespace-style '(tab-mark space-mark))
 (setq whitespace-space-regexp "\\(\x3000+\\)")
-(setq whitespace-display-mappings '((space-mark ?\x3000 [?\□])
-                                    (tab-mark ?\t [?\xBB ?\t])))
+;; (setq whitespace-display-mappings '((space-mark ?\x3000 [?\□])
+;;                                     (tab-mark ?\t [?\xBB ?\t])))
+(setq whitespace-display-mappings '((space-mark ?\x3000 [?\□])))
 (global-whitespace-mode 1)
 
 
