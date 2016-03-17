@@ -113,4 +113,14 @@
       (copy-line)
     ad-do-it))
 
+
+;;----------------------------------------------------------------------------
+;; Super Sort
+;;----------------------------------------------------------------------------
+(defun sort-regexp-lines (record-regexp begin end)
+  (interactive "sRegexp specifying records to sort: \nr")
+  (sort-regexp-fields nil
+                      (format "^.*\\(%s.*\\).*$" record-regexp)
+                      "\\1" begin end))
+
 (provide 'init-editing-utils)
