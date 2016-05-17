@@ -53,7 +53,6 @@
 (require-init 'init-cua-mode)
 (require-init 'init-diff-mode)
 (require-init 'init-smooth-scroll)
-(require-init 'init-ace-jump-mode)
 (require-init 'init-flex-autopair)
 ;; (require-init 'init-point-undo)
 (require-init 'init-goto-chg)
@@ -76,8 +75,7 @@
 (require-init 'init-go-mode)
 (require-init 'init-yaml-mode)
 (require-init 'init-php-mode)
-(require-init 'init-js2-mode)
-(require-init 'init-jsx-mode)
+(require-init 'init-javascript)
 (require-init 'init-web-mode)
 (require-init 'init-coffee-mode)
 (require-init 'init-scss-mode)
@@ -85,8 +83,6 @@
 (require-init 'init-rust-mode)
 (require-init 'init-toml-mode)
 (require-init 'init-graphviz-dot-mode)
-
-(require-init 'init-navi2ch)
 
 (require-init 'init-misc)
 (require-init 'init-user-function)

@@ -6,6 +6,7 @@
   (setq c-basic-offset 4)
   (setq indent-tabs-mode t)
   (go-eldoc-setup)
+  ;; (setq gofmt-command "goimports")
 
   (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)
   (local-set-key (kbd "C-c i") 'go-goto-imports)
