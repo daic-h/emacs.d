@@ -25,5 +25,7 @@
   (setq helm-ag-source-type 'one-line))
 (global-set-key (kbd "C-c C-'") 'helm-ag)
 (global-set-key (kbd "C-c C-t") 'helm-ag-pop-stack)
+;; (global-set-key (kbd "C-c C-'") 'helm-do-pt)
+;; (global-set-key (kbd "C-c C-t") 'helm-do-pt)
 
 (provide 'init-helm-ext)

@@ -1,17 +1,14 @@
 ;; 全角スペース、タブの強調表示
-
 (require 'whitespace)
-(require 'cl)
 (setq whitespace-style '(tab-mark space-mark))
 (setq whitespace-space-regexp "\\(\x3000+\\)")
 ;; (setq whitespace-display-mappings '((space-mark ?\x3000 [?\□])
 ;;                                     (tab-mark ?\t [?\xBB ?\t])))
 (setq whitespace-display-mappings '((space-mark ?\x3000 [?\□])))
+
 (global-whitespace-mode 1)
 
-
 ;; 末尾の空白の可視化 (whitespace-modeではタブと全角のみ行う)
-
 (setq-default show-trailing-whitespace t)
 
 ;; 末尾の空白を表示しないモード
@@ -23,15 +20,12 @@
                 compilation-mode-hook
                 twittering-mode-hook
                 minibuffer-setup-hook))
-  (add-hook hook (lambda ()
-                   (setq show-trailing-whitespace nil))))
+  (add-hook hook (lambda () (setq show-trailing-whitespace nil))))
 
 (custom-set-faces
  '(trailing-whitespace ((t (:foreground "SteelBlue" :underline t)))))
 
-
 ;; 末尾の空白削除
-
 (defvar delete-trailing-whitespace-exclude-patterns nil)
 
 (defun delete-trailing-whitespace-with-exclude-pattern ()

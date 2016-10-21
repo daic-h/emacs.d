@@ -8,7 +8,7 @@
   (c-set-offset 'substatement-open 0)
   (define-key php-mode-map (kbd "C-.") 'er/expand-region)
   (define-key php-mode-map (kbd "C-,") 'er/contract-region)
-  (helm-gtags-mode)
+  ;; (helm-gtags-mode)
   (require 'php-docblock)
   (define-key php-mode-map (kbd "RET") 'php-docblock/newline-and-indent))
 

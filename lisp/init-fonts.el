@@ -1,7 +1,7 @@
 (when (memq window-system '(mac ns))
   (let* ((asciifont "Menlo")
          (jpfont "Hiragino Maru Gothic ProN")
-         (size 15)
+         (size 14)
          (h (* size 10)))
     (set-face-attribute 'default nil :family asciifont :height h)
     (set-fontset-font t 'katakana-jisx0201 jpfont)

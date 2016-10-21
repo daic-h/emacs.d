@@ -1,3 +1,8 @@
+(setq vr/match-separator-string
+      (progn
+        (custom-reevaluate-setting 'query-replace-from-to-separator)
+        (substring-no-properties query-replace-from-to-separator)))
+
 (require 'visual-regexp-steroids)
 (setq vr/engine 'pcre2el)
 

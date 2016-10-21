@@ -132,4 +132,57 @@
      buffers))
   (switch-to-buffer "*scratch*"))
 
+;; *のついていないバッファーへの移動
+;;_______________________________________________________________
+(defun asterisked? (buf-name)
+  (= 42 (car (string-to-list buf-name))))
+
+(defun next-buffer-with-skip* ()
+  (interactive)
+  (let ((current-buffer-name (buffer-name)))
+    (next-buffer)
+    (while (and (asterisked? (buffer-name))
+                (not (string= current-buffer-name (buffer-name))))
+      (next-buffer))))
+
+(defun previous-buffer-with-skip* ()
+  (interactive)
+  (let ((current-buffer-name (buffer-name)))
+    (previous-buffer)
+    (while (and (asterisked? (buffer-name))
+                (not (string= current-buffer-name (buffer-name))))
+      (previous-buffer))))
+
+(global-set-key "\C-c\C-p" 'previous-buffer-with-skip*)
+(global-set-key "\C-c\C-n" 'next-buffer-with-skip*)
+
+;; 選択している文字列を camelcase<->snakecase に変換
+;;_______________________________________________________________
+(defun ik:decamelize (string)
+  "Convert from CamelCaseString to camel_case_string."
+  (let ((case-fold-search nil))
+    (downcase
+     (replace-regexp-in-string
+      "\\([A-Z]+\\)\\([A-Z][a-z]\\)" "\\1_\\2"
+      (replace-regexp-in-string
+       "\\([a-z\\d]\\)\\([A-Z]\\)" "\\1_\\2"
+       string)))))
+
+(defun ik:camerize<->decamelize-on-region (s e)
+  (interactive "r")
+  (let ((buf-str (buffer-substring-no-properties s e))
+        (case-fold-search nil))
+    (cond
+     ((string-match "_" buf-str)
+      (let* ((los (mapcar 'capitalize (split-string buf-str "_" t)))
+             (str (mapconcat 'identity los "")))
+        ;; snake case to camel case
+        (delete-region s e)
+        (insert str)))
+     (t
+      (let* ((str (ik:decamelize buf-str)))
+        ;; snake case to camel case
+        (delete-region s e)
+        (insert str))))))
+
 (provide 'init-user-function)

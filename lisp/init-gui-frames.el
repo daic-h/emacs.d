@@ -56,6 +56,7 @@
 ;;----------------------------------------------------------------------------
 (when *is-a-mac*
   (setq ns-use-native-fullscreen nil)
+  ;; (setq ns-use-native-fullscreen t)
   (define-key global-map (kbd "M-RET") 'toggle-frame-maximized)
   (define-key global-map (kbd "C-M-RET") 'toggle-frame-fullscreen))
 
