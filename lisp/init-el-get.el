@@ -41,8 +41,10 @@
                          google-translate
                          goto-chg
                          graphviz-dot-mode
+                         protobuf-mode
                          haml-mode
                          helm
+                         groovy-emacs-mode
                          helm-ag
                          helm-descbinds
                          helm-ghq
