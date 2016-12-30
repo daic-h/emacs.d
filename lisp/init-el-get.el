@@ -35,16 +35,16 @@
                          flex-autopair
                          flycheck
                          flycheck-rust
+                         git-commit-mode
                          git-gutter-fringe
                          go-eldoc
                          go-mode
                          google-translate
                          goto-chg
                          graphviz-dot-mode
-                         protobuf-mode
+                         groovy-emacs-mode
                          haml-mode
                          helm
-                         groovy-emacs-mode
                          helm-ag
                          helm-descbinds
                          helm-ghq
@@ -58,6 +58,7 @@
                          pcre2el
                          php-mode
                          popwin
+                         protobuf-mode
                          quickrun
                          rbenv
                          region-bindings-mode
