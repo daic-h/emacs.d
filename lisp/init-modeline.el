@@ -1,12 +1,19 @@
-;; (setq ns-use-srgb-colorspace t)
-(require 'spaceline-config)
-(spaceline-emacs-theme)
-(spaceline-helm-mode)
+(package-install 'spaceline-all-the-icons)
+(setq ns-use-srgb-colorspace nil)
 
-(setq powerline-height 20)
-;; (setq powerline-raw " ")
-(setq spaceline-separator-dir-left '(left . left))
-(setq spaceline-separator-dir-right '(right . right))
+(require 'spaceline-all-the-icons)
+
+(spaceline-all-the-icons-theme)
+
+;;  ;; (setq ns-use-srgb-colorspace t)
+;;  (require 'spaceline-config)
+;;  (spaceline-emacs-theme)
+;;  (spaceline-helm-mode)
+;;
+;;  (setq powerline-height 20)
+;;  ;; (setq powerline-raw " ")
+;;  (setq spaceline-separator-dir-left '(left . left))
+;;  (setq spaceline-separator-dir-right '(right . right))
 
 ;; ;; 時計表示
 ;; (setq display-time-string-forms '(month "/" day " " dayname " " 24-hours ":" minutes))

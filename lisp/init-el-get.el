@@ -29,9 +29,11 @@
         (:type http-tar :name howm :options ("xzf") :url "http://howm.sourceforge.jp/a/howm-1.4.3.tar.gz")))
 
 (let ((builtin-sources '(
+                         all-the-icons
                          auto-complete
                          auto-highlight-symbol
                          avy
+                         neotree
                          coffee-mode
                          dired-plus
                          direx

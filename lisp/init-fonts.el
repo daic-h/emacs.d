@@ -27,4 +27,7 @@
 
 ;; (setq-default line-spacing 0)
 
+(require 'all-the-icons)
+
+
 (provide 'init-fonts)

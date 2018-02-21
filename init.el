@@ -29,8 +29,10 @@
 ;;----------------------------------------------------------------------------
 ;; Load configs for specific features and modes
 ;;----------------------------------------------------------------------------
+(require-init 'init-fonts)
 (require-init 'init-themes)
 (require-init 'init-modeline)
+;; (require-init 'init-powerline)
 (require-init 'init-osx-keys)
 (require-init 'init-gui-frames)
 (require-init 'init-whitespace)
@@ -47,7 +49,6 @@
 (require-init 'init-ido)
 (require-init 'init-hippie-expand)
 (require-init 'init-auto-complete)
-(require-init 'init-fonts)
 (require-init 'init-windows)
 (require-init 'init-visual-regexp)
 
@@ -63,12 +64,14 @@
 (require-init 'init-smartparens)
 (require-init 'init-goto-chg)
 (require-init 'init-eww)
-(require-init 'init-direx)
+;; (require-init 'init-direx)
+(require-init 'init-neotree)
+
 
 (require-init 'init-editing-utils)
 (require-init 'init-volatile-highlights)
 (require-init 'init-git)
-(require-init 'init-git-gutter)
+;; (require-init 'init-git-gutter)
 
 (require-init 'init-avy)
 (require-init 'init-rotate)
