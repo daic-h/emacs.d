@@ -54,9 +54,10 @@
   (if (get-buffer "*scratch*")
       (let* ((str (progn (set-buffer (get-buffer "*scratch*"))
                          (buffer-substring-no-properties (point-min) (point-max))))
-             (file (concat user-emacs-directory "tmp/scratch-" (system-name)))
+             (file (concat user-emacs-directory "var/scratch/" (system-name)))
              (buf (or (get-file-buffer (expand-file-name file))
                       (find-file-noselect file))))
+        (make-directory (concat user-emacs-directory "var/scratch") t)
         (set-buffer buf)
         (erase-buffer)
         (insert str)
@@ -67,7 +68,7 @@
   (save-scratch-data))
 
 (defun read-scratch-data ()
-  (let ((file (concat user-emacs-directory "tmp/scratch-" (system-name))))
+  (let ((file (concat user-emacs-directory "var/scratch/" (system-name))))
     (when (file-exists-p file)
       (set-buffer (get-buffer "*scratch*"))
       (erase-buffer)
@@ -84,25 +85,25 @@
 
 ;; 所有者がrootだった場合にsudoで開くかを確認する
 ;;_______________________________________________________________
-(defun file-root-p (filename)
-  (eq 0 (nth 2 (file-attributes filename))))
+;; (defun file-root-p (filename)
+;;   (eq 0 (nth 2 (file-attributes filename))))
 
-(defun th-rename-tramp-buffer ()
-  (when (file-remote-p (buffer-file-name))
-    (rename-buffer
-     (format "%s:%s" (file-remote-p (buffer-file-name) 'method) (buffer-name)))))
-(add-hook 'find-file-hook #'th-rename-tramp-buffer)
+;; (defun th-rename-tramp-buffer ()
+;;   (when (file-remote-p (buffer-file-name))
+;;     (rename-buffer
+;;      (format "%s:%s" (file-remote-p (buffer-file-name) 'method) (buffer-name)))))
+;; (add-hook 'find-file-hook #'th-rename-tramp-buffer)
 
-(defadvice find-file (around th-find-file activate)
-  (if (and (file-root-p (ad-get-arg 0))
-           (not (file-writable-p (ad-get-arg 0)))
-           (y-or-n-p (concat "File " (ad-get-arg 0) " is read-only.  Open it as root? ")))
-      (th-find-file-sudo (ad-get-arg 0))
-    ad-do-it))
+;; (defadvice find-file (around th-find-file activate)
+;;   (if (and (file-root-p (ad-get-arg 0))
+;;            (not (file-writable-p (ad-get-arg 0)))
+;;            (y-or-n-p (concat "File " (ad-get-arg 0) " is read-only.  Open it as root? ")))
+;;       (th-find-file-sudo (ad-get-arg 0))
+;;     ad-do-it))
 
-(defun th-find-file-sudo (file)
-  (interactive "F")
-  (set-buffer (find-file (concat "/sudo::" file))))
+;; (defun th-find-file-sudo (file)
+;;   (interactive "F")
+;;   (set-buffer (find-file (concat "/sudo::" file))))
 
 ;; 一時的なファイルを作成する
 ;;_______________________________________________________________
@@ -110,14 +111,14 @@
   (interactive)
   (let* ((file (expand-file-name
                 (format-time-string "%Y/%m/%Y-%m-%d-%H%M%S." (current-time))
-                (concat user-emacs-directory "tmp/junk")))
+                (concat user-emacs-directory "junk")))
          (dir (file-name-directory file)))
     (make-directory dir t)
     (find-file-other-window (read-string "Junk Code: " file))))
 
 (defun find-junk-file ()
   (interactive)
-  (ido-find-file-in-dir (concat user-emacs-directory "tmp/junk")))
+  (ido-find-file-in-dir (concat user-emacs-directory "junk")))
 
 ;; 変更されてないバッファーを全部閉じる。ただし、*...* 名（*scratch* など）は除く。
 ;;_______________________________________________________________

@@ -22,11 +22,15 @@
 ;; helm-ag
 ;;
 (lazyload (helm-ag) "helm-ag"
-  (setq helm-ag-source-type 'one-line))
+  (setq helm-ag-base-command "rg --vimgrep --no-heading")
+  ;; (setq helm-ag-insert-at-point 'symbol)
+  (setq helm-ag-insert-at-point nil))
 (global-set-key (kbd "C-c C-'") 'helm-ag)
 (global-set-key (kbd "C-c C-t") 'helm-ag-pop-stack)
-;; (global-set-key (kbd "C-c C-'") 'helm-do-pt)
-;; (global-set-key (kbd "C-c C-t") 'helm-do-pt)
-
+(global-set-key (kbd "C-M-g") 'helm-ag)
+(defun helm-ag-dot-emacs ()
+  ".emacs.d以下を検索"
+  (interactive)
+  (helm-ag "~/.emacs.d/"))
 
 (provide 'init-helm-ext)

@@ -23,7 +23,7 @@
 (require-init 'init-utils)
 (require-init 'init-site-lisp)
 (require-init 'init-el-get)
-;; (require-init 'init-exec-path)
+(require-init 'init-package)
 (require-init 'init-directory)
 
 ;;----------------------------------------------------------------------------
@@ -39,6 +39,7 @@
 (require-init 'init-flycheck)
 (require-init 'init-vc-mode)
 (require-init 'init-tramp)
+(require-init 'init-popwin)
 
 (require-init 'init-helm)
 (require-init 'init-helm-ext)
@@ -59,22 +60,19 @@
 (require-init 'init-sequential-command)
 (require-init 'init-cua-mode)
 (require-init 'init-diff-mode)
-(require-init 'init-smooth-scroll)
-(require-init 'init-flex-autopair)
-;; (require-init 'init-point-undo)
+(require-init 'init-smartparens)
 (require-init 'init-goto-chg)
 (require-init 'init-eww)
+(require-init 'init-direx)
 
 (require-init 'init-editing-utils)
 (require-init 'init-volatile-highlights)
 (require-init 'init-git)
 (require-init 'init-git-gutter)
 
-(require-init 'init-popwin)
-;; (require-init 'init-jaunte)
 (require-init 'init-avy)
 (require-init 'init-rotate)
-(require-init 'init-elscreen)
+;; ;; (require-init 'init-elscreen)
 (require-init 'init-quickrun)
 
 (require-init 'init-cc-mode)
@@ -86,7 +84,7 @@
 (require-init 'init-javascript)
 (require-init 'init-web-mode)
 (require-init 'init-coffee-mode)
-(require-init 'init-scss-mode)
+(require-init 'init-css-mode)
 (require-init 'init-markdown-mode)
 (require-init 'init-rust-mode)
 (require-init 'init-toml-mode)
@@ -122,3 +120,4 @@
 
 (provide 'init)
 ;;; init.el ends here
+(put 'dired-find-alternate-file 'disabled nil)

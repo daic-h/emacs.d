@@ -1,5 +1,4 @@
 tramp
-site-lisp/el-get
 wget-log
 .DS_Store
 init-local.el
@@ -8,3 +7,6 @@ org/
 howm/
 tmp/
 elpm
+var
+etc
+junk

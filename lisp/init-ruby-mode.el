@@ -8,6 +8,8 @@
   (global-rbenv-mode))
 
 (add-hook-fn 'ruby-mode-hook
+  ;; (rufo-minor-mode)
+  (setq rufo-minor-mode-use-bundler t)
   (setq ruby-indent-level 2)
   (setq ruby-indent-tabs-mode nil))
 
