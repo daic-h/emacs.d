@@ -3,7 +3,7 @@
 ;;----------------------------------------------------------------------------
 (defun maybe-suspend-frame ()
   (interactive)
-  (unless (and *is-a-mac* window-system)
+  (unless (and (eq system-type 'darwin) window-system)
     (suspend-frame)))
 
 (global-set-key (kbd "C-z") 'maybe-suspend-frame)
@@ -54,7 +54,7 @@
 ;;----------------------------------------------------------------------------
 ;; フルスクリーンの切り替え
 ;;----------------------------------------------------------------------------
-(when *is-a-mac*
+(when (eq system-type 'darwin)
   (setq ns-use-native-fullscreen nil)
   ;; (setq ns-use-native-fullscreen t)
   (define-key global-map (kbd "M-RET") 'toggle-frame-maximized)

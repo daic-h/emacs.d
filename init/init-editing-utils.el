@@ -29,7 +29,7 @@
 (transient-mark-mode 1)
 (show-paren-mode 1)
 
-(when *is-a-mac*
+(when (eq system-type 'darwin)
   (setq-default locate-command "mdfind"))
 
 ;; (electric-pair-mode t)

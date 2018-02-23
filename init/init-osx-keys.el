@@ -1,4 +1,4 @@
-(when *is-a-mac*
+(when (eq system-type 'darwin)
   (setq ns-command-modifier 'meta)
   (setq ns-alternate-modifier 'super)
   (setq ns-right-command-modifier 'hyper)
