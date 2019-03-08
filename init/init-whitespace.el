@@ -28,6 +28,7 @@
 ;; 末尾の空白削除
 (defvar delete-trailing-whitespace-exclude-patterns nil)
 
+(require 'cl)
 (defun delete-trailing-whitespace-with-exclude-pattern ()
   (interactive)
   (if (null delete-trailing-whitespace-exclude-patterns)

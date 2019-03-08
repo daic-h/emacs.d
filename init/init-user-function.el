@@ -1,3 +1,25 @@
+;; Super Sort
+(defun sort-regexp-lines (record-regexp begin end)
+  (interactive "sRegexp specifying records to sort: \nr")
+  (sort-regexp-fields nil
+                      (format "^.*\\(%s.*\\).*$" record-regexp)
+                      "\\1" begin end))
+
+;; Half scroll
+(defun window-half-height ()
+  (max 1 (/ (1- (window-height (selected-window))) 2)))
+
+(defun scroll-up-half ()
+  (interactive)
+  (scroll-up (window-half-height)))
+
+(defun scroll-down-half ()
+  (interactive)
+  (scroll-down (window-half-height)))
+
+(define-key global-map (kbd "C-v") 'scroll-up-half)
+(define-key global-map (kbd "M-v") 'scroll-down-half)
+
 ;;----------------------------------------------------------------------------
 ;; Delete the current file
 ;;----------------------------------------------------------------------------

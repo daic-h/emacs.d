@@ -1,9 +1,23 @@
-;;; init.el --- Emacs configuration of Daichi Hirata -*- lexical-binding: t; -*-
-
-;;; Commentary:
-;; Flat configuration of Emacs
+;;; init.el --- Emacs configuration of Daichi HIRATA -*- lexical-binding: t; -*-
 
 ;;; Code:
+
+(setq user-full-name "Daichi HIRATA"
+      user-mail-address "daichirata@gmail.com")
+
+;; Always load newest byte code
+(setq load-prefer-newer t)
+
+;; reduce the frequency of garbage collection by making it happen on
+;; each 50MB of allocated data (the default is on every 0.76MB)
+(setq gc-cons-threshold (* 10 gc-cons-threshold))
+
+;; warn when opening files bigger than 100MB
+(setq large-file-warning-threshold 100000000)
+
+(setq max-lisp-eval-depth 5000)
+(setq max-specpdl-size 5000)
+
 
 (require 'package)
 (setq package-user-dir (expand-file-name "~/.el-packages"))
@@ -37,9 +51,6 @@
 ;; Load configs for specific features and modes
 ;;----------------------------------------------------------------------------
 
-;; (use-package init-el-get
-;;   :load-path "init")
-
 (use-package init-fonts
   :load-path "init")
 
@@ -50,36 +61,34 @@
   :load-path "init"
   :if (eq system-type 'darwin))
 
-(use-package init-whitespace
-  :load-path "init")
-
 (use-package init-editing-utils
-  :load-path "init")
-
-(use-package init-hippie-expand
-  :load-path "init")
-
-(use-package init-windows
-  :load-path "init")
-
-(use-package init-misc
   :load-path "init")
 
 (use-package init-user-function
   :load-path "init")
 
-(use-package spacemacs-theme :ensure t
-  :defer t
-  :init
-  (load-theme 'spacemacs-dark t))
-
-(use-package spaceline-all-the-icons :ensure t
+(use-package doom-themes :ensure t
   :config
-  (spaceline-all-the-icons-theme))
+  (setq doom-themes-enable-italic t
+        doom-themes-enable-bold t)
+  (load-theme 'doom-one t)
+  (doom-themes-neotree-config))
 
-(use-package spaceline-config :ensure spaceline
+(use-package doom-modeline :ensure t
+  :hook
+  (after-init . doom-modeline-mode)
   :config
-  (spaceline-helm-mode))
+  (setq doom-modeline-buffer-file-name-style 'truncate-with-project))
+
+(use-package nyan-mode :if window-system :ensure t
+  :config
+  (nyan-mode)
+  (nyan-start-animation))
+
+(use-package emojify :ensure t
+  :config
+  (setq emojify-emoji-styles '(unicode))
+  (add-hook 'after-init-hook #'global-emojify-mode))
 
 (use-package recentf
   :config
@@ -92,49 +101,25 @@
 
 (use-package uniquify
   :config
-  (setq uniquify-buffer-name-style 'reverse)
+  (setq uniquify-buffer-name-style 'forward)
   (setq uniquify-separator "/")
   (setq uniquify-after-kill-buffer-p t)
   (setq uniquify-ignore-buffers-re "^\\*"))
 
 (use-package flycheck :ensure t
-  :init
-  (add-hook 'after-init-hook 'global-flycheck-mode)
+  :hook
+  (after-init . global-flycheck-mode)
   :config
-  (setq flycheck-check-syntax-automatically '(save idle-change mode-enabled)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled)
         flycheck-idle-change-delay 0.8
         flycheck-disabled-checkers '(emacs-lisp-checkdoc))
   :bind (("M-n" . flycheck-next-error)
          ("M-p" . flycheck-previous-error)))
 
-(use-package popwin :ensure t
+(use-package flycheck-pos-tip :ensure t
+  :after flycheck
   :config
-  (add-to-list 'display-buffer-alist 'popwin:display-buffer)
-  ;; dired
-  (push '(dired-mode :position top)
-        popwin:special-display-config)
-  ;; compile
-  (push '("*Compile-Log*" :height 20 :noselect t)
-        popwin:special-display-config)
-  ;; backtrace
-  (push '("*Backtrace*" :height 20 :noselect t)
-        popwin:special-display-config)
-  ;; helm
-  (push '("^\*helm.+\*$" :regexp t :height 20)
-        popwin:special-display-config)
-  ;; twittering mode
-  (push '(":home" :height 25)
-        popwin:special-display-config)
-  ;; auto-async-byte-compile
-  (push '(" *auto-async-byte-compile*" :height 14 :noselect t :position bottom)
-        popwin:special-display-config)
-  ;; google-translate
-  (push '("*Google Translate*" :height 14 :noselect t :position bottom)
-        popwin:special-display-config)
-  ;; quickrun
-  (push '("*quickrun*" :height 25 :noselect t :position bottom)
-        popwin:special-display-config)
-  :bind (("C-x C-p" . popwin:keymap)))
+  (flycheck-pos-tip-mode))
 
 (use-package helm :ensure t
   :bind (("C-M-'" . helm-imenu)
@@ -159,11 +144,11 @@
         helm-ff-transformer-show-only-basename nil
         helm-buffer-max-length 50))
 
-(use-package helm-descbinds :ensure t
-  :defer t)
+(use-package helm-descbinds :ensure t :defer t)
 
 (use-package helm-swoop :ensure t
   :bind (("M-i" . helm-swoop)
+         ("C-t" . helm-swoop)
          ("C-c M-i" . helm-multi-swoop)
          ("C-x M-i" . helm-multi-swoop-all)))
 
@@ -175,9 +160,20 @@
          ("C-c C-t" . helm-ag-pop-stack)
          ("C-M-g" . helm-ag))
   :config
-  (setq helm-ag-base-command "rg --vimgrep --no-heading"
-        ;; helm-ag-insert-at-point 'symbol
-        helm-ag-insert-at-point nil))
+  (setq
+   ;; helm-ag-base-command "rg --vimgrep --no-heading"
+   ;; helm-ag-insert-at-point 'symbol
+   helm-ag-insert-at-point nil))
+
+(use-package projectile :ensure t
+  :config
+  (projectile-mode)
+  (setq projectile-completion-system 'helm))
+
+;; (use-package helm-projectile :ensure t
+;;   :after (helm projectile)
+;;   :config
+;;   (helm-projectile-on))
 
 (use-package ido
   :config
@@ -194,43 +190,39 @@
   (setq ido-vertical-define-keys 'C-n-and-C-p-only)
   (ido-vertical-mode +1))
 
-(use-package auto-complete :ensure t
-  :bind (("M-TAB" . auto-complete))
-  :config
-  (require 'auto-complete-config)
-  (ac-config-default)
-  (setq ac-auto-start 2)         ;; n文字以上の単語の時に補完を開始
-  (setq ac-delay 0.05)           ;; n秒後に補完開始
-  (setq ac-use-fuzzy t)          ;; 曖昧マッチ有効
-  (setq ac-use-comphist t)       ;; 補完推測機能有効
-  (setq ac-use-menu-map t)       ;; 保管メニューの移動
-  (setq ac-auto-show-menu 0.05)  ;; n秒後に補完メニューを表示
-  (setq ac-quick-help-delay 0.5) ;; n秒後にクイックヘルプを表示
-  (setq ac-ignore-case nil)      ;; 大文字・小文字を区別する
+;; (use-package company :ensure t
+;;   :config
+;;   (global-company-mode)
+;;   (setq company-tooltip-limit 10)
+;;   (setq company-idle-delay 0)
+;;   (setq company-echo-delay 0)
+;;   (setq company-minimum-prefix-length 2)
+;;   (setq company-require-match nil)
+;;   (setq company-selection-wrap-around t)
+;;   (setq company-tooltip-align-annotations t)
+;;   (setq company-transformers '(company-sort-by-occurrence)) ; weight by frequency
+;;   (define-key company-active-map (kbd "M-n") nil)
+;;   (define-key company-active-map (kbd "M-p") nil)
+;;   (define-key company-active-map (kbd "C-h") nil)
+;;   (define-key company-active-map (kbd "C-n") 'company-select-next)
+;;   (define-key company-active-map (kbd "C-p") 'company-select-previous))
 
-  (defadvice ac-word-candidates (after remove-word-contain-japanese activate)
-    (let ((contain-japanese (lambda (s) (string-match (rx (category japanese)) s))))
-      (setq ad-return-value
-            (remove-if contain-japanese ad-return-value))))
+;; (use-package company-box :ensure t
+;;   :hook (company-mode . company-box-mode))
 
-  ;; 補完メニューの選択色
-  (set-face-background 'ac-selection-face "DarkSlateBlue"))
-
-(use-package visual-regexp-steroids :ensure t
-  :defer t
-  :after visual-regexp)
-(use-package visual-regexp :ensure t
-  :defer t
-  :bind (("C-c r" . 'vr/replace)
-         ("C-c q" . 'vr/query-replace)
-         ("C-c m" . 'vr/mc-mark)
-         ("C-M-r" . 'vr/isearch-backward)
-         ("C-M-s" . 'vr/isearch-forward))
-  :config
-  (setq vr/match-separator-string
-      (progn
-        (custom-reevaluate-setting 'query-replace-from-to-separator)
-        (substring-no-properties query-replace-from-to-separator))))
+;; (use-package visual-regexp :ensure t :defer t
+;;   :bind (("C-c r" . 'vr/replace)
+;;          ("C-c q" . 'vr/query-replace)
+;;          ("C-c m" . 'vr/mc-mark)
+;;          ("C-M-r" . 'vr/isearch-backward)
+;;          ("C-M-s" . 'vr/isearch-forward))
+;;   :config
+;;   (setq vr/match-separator-string
+;;       (progn
+;;         (custom-reevaluate-setting 'query-replace-from-to-separator)
+;;         (substring-no-properties query-replace-from-to-separator))))
+;; (use-package visual-regexp-steroids :ensure t :defer t
+;;   :after visual-regexp)
 
 (use-package howm :ensure t
   :bind (("C-c , ," . howm-menu))
@@ -276,6 +268,13 @@
   :load-path "site-lisp"
   :bind (("C-r" . 'redo)))
 
+(use-package anzu :ensure t
+  :bind (("C-c r" . anzu-query-replace)
+         ("C-c q" . anzu-query-replace-regexp)))
+
+(use-package avy :ensure t
+  :bind* (("C-M-i" . avy-goto-word-or-subword-1)))
+
 (use-package expand-region :ensure t
   :bind (("C-." . er/expand-region)
          ("C-," . er/contract-region)))
@@ -306,28 +305,34 @@
   (cua-mode t)
   (setq cua-enable-cua-keys nil))
 
-(use-package diff-mode
-  :config
-  (set-face-attribute 'diff-added-face nil
-                      :background nil :foreground "green"
-                      :weight 'normal)
-  (set-face-attribute 'diff-removed-face nil
-                      :background nil :foreground "firebrick1"
-                      :weight 'normal)
-  (set-face-attribute 'diff-file-header-face nil
-                      :background nil :weight 'extra-bold)
-  (set-face-attribute 'diff-hunk-header-face nil
-                      :foreground "chocolate4"
-                      :background "white" :weight 'extra-bold
-                      :underline t :inherit nil))
-
 (use-package smartparens :ensure t
   :config
   (require 'smartparens-config)
   (smartparens-global-mode t))
 
-(use-package eww
-  :defer t
+(use-package init-whitespace
+  :load-path "init")
+
+(use-package neotree :ensure t
+  :bind (("C-x C-j" . neotree-toggle))
+  :config
+  (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
+
+(use-package volatile-highlights :ensure t
+  :config
+  (volatile-highlights-mode t))
+
+(use-package rotate :ensure t
+  :bind
+  ("C-c C-SPC" . rotate-layout)
+  ("C-c C-c C-SPC" . rotate-window))
+
+(use-package git-commit
+  :load-path "site-lisp")
+
+(use-package git-timemachine :ensure t :defer t)
+
+(use-package eww :defer t
   :config
   (setq eww-search-prefix "http://www.google.co.jp/search?q=")
   (defun eww-search (term)
@@ -372,33 +377,28 @@
     (setq-local eww-disable-colorize nil)
     (eww-reload)))
 
-(use-package neotree :ensure t
-  :bind (("C-x C-j" . neotree-toggle))
-  :config
-  (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
-
-(use-package volatile-highlights :ensure t
-  :config
-  (volatile-highlights-mode t))
-
-(use-package rotate :ensure t
-  :bind
-  ("C-c C-SPC" . rotate-layout)
-  ("C-c C-c C-SPC" . rotate-window))
-
-(use-package git-commit-mode
-  :defer t
-  :load-path "site-lisp")
-
-(use-package json-reformat :ensure t
-  :defer t)
-
 ;;----------------------------------------------------------------------------
 ;; Programs
 ;;----------------------------------------------------------------------------
+;; (use-package lsp-mode :ensure t
+;;   :commands lsp
+;;   :config
+;;   (require 'lsp-clients))
 
-(use-package cc-mode
-  :defer t
+;; (use-package lsp-ui :ensure t
+;;   :hook
+;;   (lsp-mode . lsp-ui-mode)
+;;   :config
+;;   (message "AAAAAAAAAAAAAAAAAaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+;;   )
+
+;; (use-package company-lsp :ensure t
+;;   :after
+;;   (company lsp-mode)
+;;   :config
+;;   (push 'company-lsp company-backends))
+
+(use-package cc-mode :defer t
   :config
   (defun my-c-mode-common-hook ()
     (setq c-basic-offset 4)
@@ -428,6 +428,14 @@
       (apply forig (cons shell args))))
   (advice-add 'sh-set-shell :around #'sh-set-shell-advice))
 
+(use-package ruby-mode :defer t
+  :config
+  (setq ruby-insert-encoding-magic-comment nil)
+  (defun my-ruby-mode-hook ()
+    (setq rufo-minor-mode-use-bundler t
+          ruby-indent-level 2
+          ruby-indent-tabs-mode nil))
+  (add-hook 'ruby-mode-hook #'my-ruby-mode-hook))
 (use-package rufo :ensure t
   :after ruby-mode)
 (use-package rbenv :ensure t
@@ -435,17 +443,9 @@
   :config
   (setq rbenv-show-active-ruby-in-modeline nil)
   (global-rbenv-mode))
-(use-package ruby-mode
-  :defer t
-  :config
-  (defun ruby--encoding-comment-required-p () nil)
-  (defun my-ruby-mode-hook ()
-    (setq rufo-minor-mode-use-bundler t
-          ruby-indent-level 2
-          ruby-indent-tabs-mode nil))
-  (add-hook 'ruby-mode-hook #'my-ruby-mode-hook))
 
-(use-package go-eldoc :ensure t :after go-mode)
+(use-package go-eldoc :ensure t
+  :after go-mode)
 (use-package go-mode :ensure t
   :defer t
   :config
@@ -460,14 +460,11 @@
     (local-set-key (kbd "C-c C-b") 'pop-tag-mark))
   (add-hook 'go-mode-hook #'my-gomode-hook))
 
-(use-package toml-mode :ensure t
-  :defer t)
+(use-package toml-mode :ensure t :defer t)
 
-(use-package yaml-mode :ensure t
-  :defer t)
+(use-package yaml-mode :ensure t :defer t)
 
-(use-package php-mode :ensure t
-  :defer t
+(use-package php-mode :ensure t :defer t
   :bind (:map php-mode-map
          ("C-." . 'er/expand-region)
          ("C-," . 'er/contract-region))
@@ -480,31 +477,35 @@
     (c-set-offset 'substatement-open 0))
   (add-hook 'php-mode-hook #'my-php-mode-hook))
 
-(use-package vue-mode :ensure t
-  :defer t)
-(use-package prettier-js :ensure t
-  :defer t
-  :after (:any vue-mode js2-mode)
+(use-package add-node-modules-path :ensure t :defer t)
+
+(use-package prettier-js :ensure t :defer t)
+
+(use-package js-mode :defer t
   :init
-  (add-hook 'js2-mode-hook 'prettier-js-mode)
-  (add-hook 'vue-mode-hook 'prettier-js-mode))
-(use-package add-node-modules-path :ensure t
-  :defer t
-  :init
-  (add-hook 'js2-mode-hook #'add-node-modules-path)
-  (add-hook 'vue-mode-hook #'add-node-modules-path))
-(use-package js2-mode :ensure t
-  :defer t
+  (setq js-indent-level 2))
+
+(use-package js2-mode :ensure t :defer t
+  :mode (("\\.js$" . js2-mode))
   :config
   (setq js-indent-level 2
         js2-basic-offset 2
         js2-strict-trailing-comma-warning nil
         js2-strict-inconsistent-return-warning nil
-        js2-strict-missing-semi-warning nil))
+        js2-strict-missing-semi-warning nil)
+  (add-hook 'js2-mode-hook #'add-node-modules-path)
+  (add-hook 'js2-mode-hook #'prettier-js-mode))
+
+(use-package json-reformat :ensure t :defer t)
+
+(use-package vue-mode :ensure t :defer t
+  :mode (("\\.vue$" . vue-mode))
+  :config
+  (add-hook 'vue-mode-hook #'add-node-modules-path)
+  (add-hook 'vue-mode-hook #'prettier-js-mode))
 
 (use-package web-mode :ensure t
-  :mode (("\\.html?$" . web-mode)
-         ("\\.phtml$" . web-mode)
+  :mode (("\\.html$" . web-mode)
          ("\\.erb$" . web-mode))
   :config
   (defun my-web-mode-hook ()
@@ -515,16 +516,20 @@
           web-mode-code-indent-offset 2))
   (add-hook 'web-mode-hook #'my-web-mode-hook))
 
-(use-package coffee-mode :ensure t
-  :defer t
+(use-package coffee-mode :ensure t :defer t
   :custom
   (coffee-tab-width 2 ""))
 
 (use-package css-mode :ensure t
-  :mode ("\\.scss$" . css-mode))
+  :mode (("\\.scss$" . css-mode)
+         ("\\.sass$" . css-mode)))
+
+(use-package stylefmt :ensure t
+  :config
+  (add-hook 'css-mode-hook 'stylefmt-enable-on-save))
 
 (use-package markdown-mode :ensure t
-  :mode ("\\.md\\'" . gfm-mode)
+  :mode ("\\.md$" . gfm-mode)
   :config
   (defun my-markdown-mode-hook ()
     (setq markdown-command "multimarkdown")
@@ -563,23 +568,17 @@
                                                      (3 markdown-header-face-6)))))
   (add-hook 'markdown-mode-hook #'my-markdown-mode-hook))
 
-(use-package rust-mode :ensure t
-  :defer t)
+(use-package rust-mode :ensure t :defer t)
 
-(use-package dockerfile-mode :ensure t
-  :defer t)
+(use-package dockerfile-mode :ensure t :defer t)
 
-(use-package haml-mode :ensure t
-  :defer t)
+(use-package haml-mode :ensure t :defer t)
 
-(use-package jinja2-mode :ensure t
-  :defer t)
+(use-package jinja2-mode :ensure t :defer t)
 
-(use-package lua-mode :ensure t
-  :defer t)
+(use-package lua-mode :ensure t :defer t)
 
-(use-package protobuf-mode :ensure t
-  :defer t)
+(use-package protobuf-mode :ensure t :defer t)
 
 ;;----------------------------------------------------------------------------
 ;; Allow access from emacsclient

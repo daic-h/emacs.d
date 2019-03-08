@@ -25,9 +25,6 @@
   ;; C-x 5 2 で新しいフレームを作ったときに同じフォントを使う
   (setq frame-inherited-parameters '(font tool-bar-lines)))
 
-;; (setq-default line-spacing 0)
-
-(require 'all-the-icons)
-
+(setq-default line-spacing 0)
 
 (provide 'init-fonts)
